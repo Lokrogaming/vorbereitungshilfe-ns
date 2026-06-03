@@ -95,6 +95,8 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#1a1a1a;min-height:10
 .gap-input:focus{border-bottom-color:#0d6b5a}
 .gap-input.gg{border-bottom-color:#1A5E36;color:#1A5E36}
 .gap-input.gw{border-bottom-color:#c0392b;color:#c0392b}
+.gap-input.gh{border-bottom-color:#e67e22;color:#e67e22}
+.gap-hint{font-size:11px;color:#e67e22;margin-left:4px;display:none;font-style:italic}
 .check-gap-btn{background:#16a085;color:#fff;border:none;border-radius:5px;padding:7px 16px;font-size:12px;cursor:pointer;margin-top:6px}
 .check-gap-btn:hover{background:#0d6b5a}
 .gap-feedback{font-size:12px;margin-top:6px;padding:6px 10px;border-radius:5px;display:none}
@@ -465,7 +467,7 @@ function renderSec(sec){
       // Build gap text with inputs
       let txt=ex.template;
       ex.slots.forEach((sl,si)=>{
-        txt=txt.replace(`__${sl}__`,`<input class="gap-input" id="gi-${rid}-${si}" placeholder="?" data-ans="${ex.blanks[si]}" autocomplete="off">`);
+        txt=txt.replace(`__${sl}__`,`<input class="gap-input" id="gi-${rid}-${si}" placeholder="?" data-ans="${ex.blanks[si]}" autocomplete="off"><span class="gap-hint" id="gh-${rid}-${si}"></span>`);
       });
       exH+=`<div class="qtext">${ex.label||'Fülle die Lücken aus.'}</div>
         <div class="gap-text">${txt}</div>
@@ -577,20 +579,103 @@ function chkMC(rid,oi,correct){
 }
 
 // ─── GAP CHECK ────────────────────────────────
+// Fuzzy match: toleriert Groß/Kleinschreibung, Umlaute-Varianten, kleine Tippfehler
+function fuzzyMatch(ans, exp){
+  const norm = s => s.trim().toLowerCase()
+    .replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss');
+  const a = norm(ans), e = norm(exp);
+  if(a === e) return true;
+  // Enthält-Prüfung für lange Wörter
+  if(a.length >= 4 && e.includes(a)) return true;
+  if(e.length >= 4 && a.includes(e)) return true;
+  // Levenshtein-Distanz für kleine Tippfehler (max 2 bei langen Wörtern)
+  if(a.length < 3 || e.length < 3) return false;
+  const maxDist = e.length <= 6 ? 1 : 2;
+  let dp = Array.from({length:a.length+1},(_,i)=>[i,...Array(e.length).fill(0)]);
+  for(let j=1;j<=e.length;j++) dp[0][j]=j;
+  for(let i=1;i<=a.length;i++)
+    for(let j=1;j<=e.length;j++)
+      dp[i][j]=a[i-1]===e[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+  return dp[a.length][e.length] <= maxDist;
+}
+
+// Hinweis generieren: erste 2 Buchstaben + Länge
+function makeHint(exp){
+  const w = exp.trim();
+  if(w.length <= 3) return `Tipp: Das Wort hat ${w.length} Buchstaben.`;
+  return `Tipp: Das Wort beginnt mit "${w.slice(0,2).toUpperCase()}" und hat ${w.length} Buchstaben.`;
+}
+
+// attempt-Tracking: {rid-i → 0|1|2}
+const gapAttempts={};
+
 function chkGap(rid,n){
-  let ok=0;
+  let ok=0, wrong=[], stillOpen=false;
+
   for(let i=0;i<n;i++){
     const inp=document.getElementById(`gi-${rid}-${i}`);
+    const hint=document.getElementById(`gh-${rid}-${i}`);
     if(!inp) continue;
-    const ans=inp.value.trim().toLowerCase();
-    const exp=inp.dataset.ans.toLowerCase();
-    if(ans===exp||exp.includes(ans)&&ans.length>3){inp.classList.add('gg');ok++;}
-    else{inp.classList.add('gw');}
-    inp.readOnly=true;
+    if(inp.readOnly){ ok++; continue; } // already solved
+
+    const ans=inp.value.trim();
+    const exp=inp.dataset.ans;
+    const key=`${rid}-${i}`;
+    if(!gapAttempts[key]) gapAttempts[key]=0;
+
+    if(fuzzyMatch(ans, exp)){
+      inp.classList.remove('gw','gh');
+      inp.classList.add('gg');
+      inp.readOnly=true;
+      if(hint) hint.style.display='none';
+      ok++;
+    } else {
+      gapAttempts[key]++;
+      inp.classList.remove('gg');
+
+      if(gapAttempts[key]===1){
+        // Erster Fehler: Hinweis zeigen, Feld orange
+        inp.classList.remove('gw');
+        inp.classList.add('gh');
+        if(hint){
+          hint.textContent=makeHint(exp);
+          hint.style.display='inline';
+        }
+        wrong.push(i);
+        stillOpen=true;
+      } else {
+        // Zweiter Fehler: Lösung aufdecken
+        inp.classList.remove('gh');
+        inp.classList.add('gw');
+        inp.value=exp;
+        inp.readOnly=true;
+        if(hint){
+          hint.textContent=`Lösung: ${exp}`;
+          hint.style.cssText='display:inline;color:#c0392b;font-size:11px;margin-left:4px';
+        }
+        wrong.push(i);
+      }
+    }
   }
+
   const fb=document.getElementById(`gf-${rid}`);
-  fb.className=`gap-feedback vis ${ok===n?'gfok':'gfno'}`;
-  fb.textContent=ok===n?`✅ Alle ${n} Lücken richtig!`:`${ok} von ${n} richtig. Schau dir die roten Felder an.`;
+  fb.className='gap-feedback vis';
+  const remaining=Array.from({length:n},(_,i)=>i).filter(i=>{
+    const inp=document.getElementById(`gi-${rid}-${i}`);
+    return inp && !inp.readOnly;
+  });
+
+  if(ok===n){
+    fb.className='gap-feedback vis gfok';
+    fb.textContent=`✅ Alle ${n} Lücken richtig! Sehr gut!`;
+  } else if(remaining.length>0){
+    fb.className='gap-feedback vis';
+    fb.style.background='#fff8e1';fb.style.color='#5d4037';fb.style.borderLeft='3px solid #f39c12';
+    fb.textContent=`${ok} von ${n} richtig. Schau die Hinweise an und versuche die gelben Felder nochmal!`;
+  } else {
+    fb.className='gap-feedback vis gfno';
+    fb.textContent=`${ok} von ${n} Lücken selbst richtig gelöst. Lern die roten Lösungen auswendig!`;
+  }
 }
 
 // ─── OPEN TOGGLE ──────────────────────────────
