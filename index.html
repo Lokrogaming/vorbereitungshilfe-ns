@@ -8,99 +8,125 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f0f2f5;color:#1a1a1a;min-height:100vh}
 
-/* HEADER */
-.header{background:#1C1C1A;color:#fff;padding:18px 20px 14px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.header h1{font-size:18px;margin-bottom:3px}
-.header p{font-size:13px;color:#aaa}
-.progress-bar-wrap{margin-top:10px;background:#333;border-radius:8px;height:10px;overflow:hidden}
-.progress-bar{height:10px;background:linear-gradient(90deg,#1A5E36,#2ecc71);border-radius:8px;transition:width .5s}
-.progress-label{font-size:12px;color:#aaa;margin-top:4px;text-align:right}
+.header{background:#1C1C1A;color:#fff;padding:16px 20px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.header h1{font-size:17px;margin-bottom:2px}
+.header p{font-size:12px;color:#aaa}
+.progress-bar-wrap{margin-top:8px;background:#333;border-radius:8px;height:8px;overflow:hidden}
+.progress-bar{height:8px;background:linear-gradient(90deg,#1A5E36,#2ecc71);border-radius:8px;transition:width .5s}
+.progress-label{font-size:11px;color:#aaa;margin-top:3px;text-align:right}
 
-/* NAV */
-.nav{display:flex;gap:6px;padding:12px 16px;background:#fff;border-bottom:1px solid #e0e0e0;overflow-x:auto;flex-wrap:wrap}
-.nav-btn{padding:7px 14px;border:1.5px solid #ddd;border-radius:20px;background:#fff;font-size:13px;cursor:pointer;white-space:nowrap;transition:all .2s}
+.nav{display:flex;gap:6px;padding:10px 14px;background:#fff;border-bottom:1px solid #e0e0e0;overflow-x:auto;flex-wrap:wrap}
+.nav-btn{padding:6px 13px;border:1.5px solid #ddd;border-radius:20px;background:#fff;font-size:12px;cursor:pointer;white-space:nowrap;transition:all .2s}
 .nav-btn.active{background:#1C1C1A;color:#fff;border-color:#1C1C1A}
 .nav-btn.done{border-color:#1A5E36;color:#1A5E36}
 .nav-btn.warn{border-color:#e67e22;color:#e67e22}
 
-/* MAIN */
-.main{padding:16px;max-width:820px;margin:0 auto}
+.main{padding:14px;max-width:840px;margin:0 auto}
 
-/* TOPIC CARD */
-.topic-card{background:#fff;border-radius:12px;border:1.5px solid #e8e8e8;margin-bottom:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.topic-header{padding:14px 18px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
-.topic-header h2{font-size:16px;font-weight:600}
-.topic-status{display:flex;align-items:center;gap:8px}
+.card{background:#fff;border-radius:12px;border:1.5px solid #e8e8e8;margin-bottom:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card-header{padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.card-header h2{font-size:15px;font-weight:600}
 .badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px}
 .badge.sicher{background:#e8f5e9;color:#1A5E36}
 .badge.unsicher{background:#fff3e0;color:#e65100}
 .badge.offen{background:#f3f3f3;color:#666}
-.chevron{font-size:14px;transition:transform .3s;color:#999}
-.topic-body{display:none;border-top:1px solid #f0f0f0}
-.topic-body.open{display:block}
 
-/* SELF-ASSESS */
-.self-assess{padding:14px 18px;background:#fafafa;border-bottom:1px solid #f0f0f0}
-.self-assess p{font-size:14px;color:#444;margin-bottom:10px}
+.self-assess{padding:12px 18px;background:#fafafa;border-bottom:1px solid #f0f0f0}
+.self-assess p{font-size:13px;color:#444;margin-bottom:8px}
 .assess-btns{display:flex;gap:8px;flex-wrap:wrap}
-.assess-btn{padding:7px 16px;border-radius:20px;border:1.5px solid #ddd;background:#fff;font-size:13px;cursor:pointer;transition:all .15s}
-.assess-btn.selected-sicher{background:#1A5E36;color:#fff;border-color:#1A5E36}
-.assess-btn.selected-unsicher{background:#e65100;color:#fff;border-color:#e65100}
+.assess-btn{padding:6px 14px;border-radius:20px;border:1.5px solid #ddd;background:#fff;font-size:12px;cursor:pointer;transition:all .15s}
+.assess-btn.sel-s{background:#1A5E36;color:#fff;border-color:#1A5E36}
+.assess-btn.sel-u{background:#e65100;color:#fff;border-color:#e65100}
 
-/* EXERCISES */
 .exercises{padding:14px 18px}
-.ex-title{font-size:13px;font-weight:600;color:#555;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px}
-.exercise{background:#f8f9fa;border-radius:8px;padding:14px;margin-bottom:12px;border-left:3px solid #ccc}
-.exercise.afb1{border-left-color:#3498db}
-.exercise.afb2{border-left-color:#8e44ad}
-.exercise.afb3{border-left-color:#e67e22}
-.exercise .afb-badge{font-size:10px;font-weight:700;letter-spacing:.08em;margin-bottom:6px;text-transform:uppercase}
-.afb1 .afb-badge{color:#3498db}
-.afb2 .afb-badge{color:#8e44ad}
-.afb3 .afb-badge{color:#e67e22}
-.exercise .question{font-size:14px;font-weight:500;margin-bottom:10px;line-height:1.5}
-.exercise .source-box{background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:10px 12px;margin-bottom:10px;font-size:13px;font-style:italic;color:#444;line-height:1.6}
-.answer-area{width:100%;min-height:80px;border:1.5px solid #ddd;border-radius:6px;padding:8px 10px;font-family:Arial;font-size:14px;resize:vertical;background:#fff}
-.answer-area:focus{outline:none;border-color:#1A5E36}
-.ex-footer{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-.show-ans-btn{background:none;border:1.5px solid #1A5E36;color:#1A5E36;border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer}
-.show-ans-btn:hover{background:#1A5E36;color:#fff}
-.answer-reveal{background:#e8f5e9;border-radius:6px;padding:10px 12px;margin-top:8px;font-size:13px;color:#1a3a1a;display:none;line-height:1.6}
-.answer-reveal.visible{display:block}
-.pts{font-size:12px;color:#888}
+.ex-section-title{font-size:11px;font-weight:700;color:#999;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+
+.exercise{border-radius:8px;padding:14px;margin-bottom:12px;border-left:3px solid #ccc;background:#f8f9fa}
+.exercise.afb1{border-left-color:#3498db;background:#f0f7ff}
+.exercise.afb2{border-left-color:#8e44ad;background:#f8f0ff}
+.exercise.afb3{border-left-color:#e67e22;background:#fff8f0}
+.afb-badge{font-size:10px;font-weight:700;letter-spacing:.08em;margin-bottom:6px;text-transform:uppercase}
+.afb1 .afb-badge{color:#2980b9}
+.afb2 .afb-badge{color:#7d3c98}
+.afb3 .afb-badge{color:#d35400}
+.question{font-size:14px;font-weight:500;margin-bottom:10px;line-height:1.5}
+.source-box{background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:10px 12px;margin-bottom:10px;font-size:12px;font-style:italic;color:#444;line-height:1.6}
 
 /* MC */
-.mc-options{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
-.mc-opt{display:flex;align-items:flex-start;gap:8px;background:#fff;border:1.5px solid #ddd;border-radius:6px;padding:8px 12px;cursor:pointer;font-size:14px;transition:all .15s}
-.mc-opt:hover{border-color:#1A5E36}
+.mc-opts{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.mc-opt{display:flex;align-items:flex-start;gap:8px;background:#fff;border:1.5px solid #ddd;border-radius:6px;padding:8px 12px;cursor:pointer;font-size:13px;transition:all .15s;line-height:1.4}
+.mc-opt:hover:not(.locked){border-color:#1A5E36}
 .mc-opt.correct{border-color:#1A5E36;background:#e8f5e9}
 .mc-opt.wrong{border-color:#c0392b;background:#fde8e8}
-.mc-opt input{margin-top:2px;flex-shrink:0}
+.mc-opt .opt-icon{flex-shrink:0;width:18px;height:18px;border-radius:50%;border:1.5px solid #ccc;display:flex;align-items:center;justify-content:center;font-size:11px;margin-top:1px}
+.mc-opt.correct .opt-icon{background:#1A5E36;border-color:#1A5E36;color:#fff}
+.mc-opt.wrong .opt-icon{background:#c0392b;border-color:#c0392b;color:#fff}
 
-/* BEGRIFFE MATCH */
+/* OPEN */
+.answer-area{width:100%;min-height:80px;border:1.5px solid #ddd;border-radius:6px;padding:8px 10px;font-family:Arial;font-size:13px;resize:vertical;background:#fff;line-height:1.5}
+.answer-area:focus{outline:none;border-color:#1A5E36}
+.submit-btn{margin-top:8px;background:#1C1C1A;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:13px;cursor:pointer;transition:opacity .2s}
+.submit-btn:hover{opacity:.85}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* AI FEEDBACK */
+.ai-feedback{border-radius:8px;padding:12px 14px;margin-top:8px;font-size:13px;line-height:1.7;display:none}
+.ai-feedback.visible{display:block}
+.ai-feedback.loading{background:#f0f0f0;color:#888;font-style:italic}
+.ai-feedback.good{background:#e8f5e9;border-left:3px solid #1A5E36;color:#1a3a1a}
+.ai-feedback.partial{background:#fff8e1;border-left:3px solid #f39c12;color:#5d4037}
+.ai-feedback.poor{background:#fde8e8;border-left:3px solid #c0392b;color:#4a1010}
+.ai-feedback .fb-header{font-weight:700;margin-bottom:6px;font-size:13px}
+.ai-feedback .model-answer{margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,.1);font-size:12px;color:#555}
+
+/* MATCH */
 .match-wrap{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.match-col{display:flex;flex-direction:column;gap:6px}
-.match-item{padding:8px 12px;border-radius:6px;font-size:13px;cursor:pointer;border:1.5px solid #ddd;background:#fff;transition:all .15s;text-align:center}
+.match-col-label{font-size:11px;color:#888;font-weight:700;margin-bottom:4px}
+.match-item{padding:7px 10px;border-radius:6px;font-size:12px;cursor:pointer;border:1.5px solid #ddd;background:#fff;transition:all .15s;text-align:center;line-height:1.4}
 .match-item.selected{border-color:#1A5E36;background:#e8f5e9}
-.match-item.matched{border-color:#1A5E36;background:#c8e6c9;cursor:default}
+.match-item.matched{border-color:#1A5E36;background:#c8e6c9;cursor:default;color:#0a3d0a}
 .match-item.wrong-match{border-color:#c0392b;background:#fde8e8}
+.match-item.disabled{opacity:.5;cursor:default}
 
-/* FEEDBACK BOX */
-.feedback{padding:12px 18px;border-top:1px solid #f0f0f0}
-.feedback-hint{background:#fff8e1;border-left:3px solid #f39c12;border-radius:0 6px 6px 0;padding:10px 14px;font-size:13px;color:#5d4037;display:none}
-.feedback-hint.visible{display:block}
+/* FINAL EVALUATION */
+.eval-wrap{padding:16px}
+.eval-header{text-align:center;padding:20px;border-radius:12px;margin-bottom:16px}
+.eval-header.great{background:linear-gradient(135deg,#e8f5e9,#c8e6c9)}
+.eval-header.good{background:linear-gradient(135deg,#e3f2fd,#bbdefb)}
+.eval-header.needs-work{background:linear-gradient(135deg,#fff8e1,#ffe082)}
+.eval-score{font-size:40px;font-weight:700;margin-bottom:6px}
+.eval-msg{font-size:15px;font-weight:600;color:#333}
+.eval-sub{font-size:13px;color:#666;margin-top:4px}
+.topic-results{display:flex;flex-direction:column;gap:8px}
+.topic-result{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff;border-radius:8px;border:1px solid #e8e8e8}
+.topic-result .tr-icon{font-size:20px;flex-shrink:0;width:28px;text-align:center}
+.topic-result .tr-info{flex:1}
+.topic-result .tr-title{font-size:13px;font-weight:600}
+.topic-result .tr-score{font-size:12px;color:#888;margin-top:2px}
+.topic-result .tr-badge{font-size:11px;padding:2px 8px;border-radius:8px;font-weight:600;flex-shrink:0}
+.tr-badge.gut{background:#e8f5e9;color:#1A5E36}
+.tr-badge.mittel{background:#fff8e1;color:#e65100}
+.tr-badge.schwach{background:#fde8e8;color:#c0392b}
+.restart-btn{display:block;width:100%;margin-top:14px;padding:12px;background:#1C1C1A;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;text-align:center}
+.restart-btn:hover{background:#333}
 
-/* OVERVIEW */
-.overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:4px}
-.ov-card{background:#fff;border-radius:10px;padding:14px;border:1.5px solid #e8e8e8;text-align:center;font-size:13px}
-.ov-card .ov-icon{font-size:28px;margin-bottom:6px}
-.ov-card .ov-label{font-size:12px;color:#888;margin-bottom:4px}
-.ov-card .ov-val{font-size:20px;font-weight:700}
-.ov-card.green .ov-val{color:#1A5E36}
-.ov-card.orange .ov-val{color:#e65100}
+/* OVERVIEW CARDS */
+.ov-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.ov-card{background:#fff;border-radius:10px;padding:14px;border:1.5px solid #e8e8e8;text-align:center}
+.ov-icon{font-size:26px;margin-bottom:4px}
+.ov-label{font-size:11px;color:#888;margin-bottom:2px}
+.ov-val{font-size:22px;font-weight:700}
+.ov-val.green{color:#1A5E36}
+.ov-val.orange{color:#e65100}
 
-/* SECTION DIVIDER */
-.sec-div{font-size:11px;font-weight:700;color:#999;letter-spacing:.1em;text-transform:uppercase;padding:0 0 8px;margin-top:4px}
+.hint-box{background:#fff8e1;border-left:4px solid #f39c12;border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#5d4037;margin:10px 0}
+
+.eval-btn-wrap{margin-top:16px;text-align:center}
+.eval-btn{background:#1A5E36;color:#fff;border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:600;cursor:pointer}
+.eval-btn:hover{background:#0F3D22}
+
+.back-btn{display:flex;align-items:center;gap:6px;font-size:13px;color:#888;cursor:pointer;margin-bottom:12px;background:none;border:none;padding:0}
+.back-btn:hover{color:#333}
 </style>
 </head>
 <body>
@@ -113,97 +139,187 @@ body{font-family:Arial,sans-serif;background:#f0f2f5;color:#1a1a1a;min-height:10
 </div>
 
 <div class="nav" id="navBar">
-  <button class="nav-btn active" onclick="showSection('overview')">Übersicht</button>
+  <button class="nav-btn active" onclick="showSection('overview')">📋 Übersicht</button>
   <button class="nav-btn" id="nav-0" onclick="showSection(0)">Begriffe</button>
   <button class="nav-btn" id="nav-1" onclick="showSection(1)">Quellenanalyse</button>
-  <button class="nav-btn" id="nav-2" onclick="showSection(2)">Stationen Diktatur</button>
+  <button class="nav-btn" id="nav-2" onclick="showSection(2)">Stationen</button>
   <button class="nav-btn" id="nav-3" onclick="showSection(3)">NS-Ideologie</button>
   <button class="nav-btn" id="nav-4" onclick="showSection(4)">Reichstagsbrand</button>
   <button class="nav-btn" id="nav-5" onclick="showSection(5)">Wirtschaft</button>
-  <button class="nav-btn" id="nav-6" onclick="showSection(6)">Unterstützung Hitler</button>
+  <button class="nav-btn" id="nav-6" onclick="showSection(6)">Unterstützung</button>
 </div>
 
 <div class="main" id="mainContent"></div>
 
 <script>
-const STATUS = {};
+// ── STATE ──────────────────────────────────────
+const STATUS = {};        // 0-6 → 'sicher'|'unsicher'
+const SCORES = {};        // sectionId → {points, max}
+const AI_RESULTS = {};    // "sid-eid" → {rating:'good'|'partial'|'poor'}
+let currentSection = 'overview';
+
+// ── MC QUESTION POOLS ─────────────────────────
+const MC_POOLS = {
+  gleichschaltung: [
+    {q:"Was versteht man unter dem Begriff 'Gleichschaltung'?",opts:[
+      {t:"Einführung gleicher Löhne für alle Deutschen.",c:false},
+      {t:"Unterordnung aller staatlichen und gesellschaftlichen Bereiche unter die NSDAP.",c:true},
+      {t:"Gleichstellung von Frauen und Männern im Beruf.",c:false},
+      {t:"Vereinheitlichung des Schulsystems.",c:false},
+    ]},
+    {q:"Welcher Bereich wurde NICHT durch die Gleichschaltung der NSDAP untergeordnet?",opts:[
+      {t:"Gewerkschaften",c:false},
+      {t:"Länderregierungen",c:false},
+      {t:"Politische Parteien",c:false},
+      {t:"Die Päpstliche Kirche in Rom",c:true},
+    ]},
+    {q:"In welchem Jahr begann die Gleichschaltung der deutschen Gesellschaft?",opts:[
+      {t:"1929 – nach dem Börsenkrach",c:false},
+      {t:"1933 – nach Hitlers Ernennung zum Reichskanzler",c:true},
+      {t:"1939 – zu Beginn des Zweiten Weltkriegs",c:false},
+      {t:"1925 – nach dem Erscheinen von 'Mein Kampf'",c:false},
+    ]},
+  ],
+  fuehrerprinzip: [
+    {q:"Was besagt das Führerprinzip?",opts:[
+      {t:"Alle Entscheidungen werden demokratisch per Mehrheit getroffen.",c:false},
+      {t:"Der Führer hat uneingeschränkte Macht und erhält bedingungslosen Gehorsam.",c:true},
+      {t:"Jeder Bürger kann Führer werden, wenn er gewählt wird.",c:false},
+      {t:"Der Führer muss dem Parlament Rechenschaft ablegen.",c:false},
+    ]},
+    {q:"Was ist der Gegensatz zum Führerprinzip in einer Demokratie?",opts:[
+      {t:"Monarchie",c:false},
+      {t:"Diktatur",c:false},
+      {t:"Gewaltenteilung und parlamentarische Kontrolle",c:true},
+      {t:"Militärherrschaft",c:false},
+    ]},
+  ],
+  ideologie: [
+    {q:"Welche der folgenden Aussagen entspricht NICHT der NS-Ideologie?",opts:[
+      {t:"Die Deutschen gehören zu einer überlegenen Rasse.",c:false},
+      {t:"Das Volk braucht mehr Lebensraum im Osten Europas.",c:false},
+      {t:"Alle Menschen sind gleichwertig und haben gleiche Rechte.",c:true},
+      {t:"Der Führer hat uneingeschränkte Macht.",c:false},
+    ]},
+    {q:"Wo wollten die Nationalsozialisten laut ihrer Ideologie neuen 'Lebensraum' gewinnen?",opts:[
+      {t:"In Nordafrika und den USA",c:false},
+      {t:"In Westeuropa (Frankreich, Belgien)",c:false},
+      {t:"In Osteuropa – besonders Russland und Ukraine",c:true},
+      {t:"In Südamerika",c:false},
+    ]},
+    {q:"Was bezeichneten die Nationalsozialisten mit dem Begriff 'Arier'?",opts:[
+      {t:"Alle Einwohner Deutschlands unabhängig von Herkunft",c:false},
+      {t:"Eine angeblich überlegene nordische/germanische Rasse – eine rassistische Erfindung",c:true},
+      {t:"Nur Mitglieder der NSDAP",c:false},
+      {t:"Alle europäischen Völker zusammen",c:false},
+    ]},
+  ],
+  wirtschaft: [
+    {q:"Was waren die Mefo-Wechsel?",opts:[
+      {t:"Eine Art Goldmünze aus der NS-Zeit",c:false},
+      {t:"Staatliche Schuldversprechen, mit denen Rüstungsunternehmen bezahlt wurden – die Schulden wurden geheim gehalten",c:true},
+      {t:"Sonderkredite für Arbeitslose",c:false},
+      {t:"Wechselkurse zwischen Reichsmark und Dollar",c:false},
+    ]},
+    {q:"Wie viele Millionen Deutsche waren 1932 arbeitslos?",opts:[
+      {t:"Etwa 1 Million",c:false},
+      {t:"Etwa 3 Millionen",c:false},
+      {t:"Etwa 6 Millionen",c:true},
+      {t:"Etwa 10 Millionen",c:false},
+    ]},
+    {q:"Wofür wurden die meisten öffentlichen Investitionen nach 1933 verwendet?",opts:[
+      {t:"Für Schulen und Universitäten",c:false},
+      {t:"Für Rüstung und Militär",c:true},
+      {t:"Für Sozialhilfe und Renten",c:false},
+      {t:"Für die Landwirtschaft",c:false},
+    ]},
+  ],
+  diktatur: [
+    {q:"Wann wurde Hitler zum Reichskanzler ernannt?",opts:[
+      {t:"30. Januar 1933",c:true},
+      {t:"28. Februar 1933",c:false},
+      {t:"23. März 1933",c:false},
+      {t:"2. August 1934",c:false},
+    ]},
+    {q:"Was ermöglichte das Ermächtigungsgesetz (23. März 1933)?",opts:[
+      {t:"Hitler durfte Deutschland verlassen und im Ausland regieren",c:false},
+      {t:"Hitler konnte ohne Zustimmung des Reichstags Gesetze erlassen",c:true},
+      {t:"Alle Deutschen mussten in die NSDAP eintreten",c:false},
+      {t:"Der Reichspräsident wurde abgeschafft",c:false},
+    ]},
+    {q:"Was geschah am 2. August 1934?",opts:[
+      {t:"Der Reichstag wurde abgebrannt",c:false},
+      {t:"Das Ermächtigungsgesetz trat in Kraft",c:false},
+      {t:"Hitler vereinte die Ämter Reichskanzler und Reichspräsident – er wurde 'Führer'",c:true},
+      {t:"Die NSDAP wurde gegründet",c:false},
+    ]},
+  ],
+};
+
+function pickMC(pool, n=1) {
+  const shuffled = [...pool].sort(() => Math.random() - .5);
+  return shuffled.slice(0, n);
+}
+function shuffleOpts(opts) {
+  return [...opts].sort(() => Math.random() - .5);
+}
+
+// ── SECTIONS DATA ─────────────────────────────
 const SECTIONS = [
   {
     id:0, title:"Begriffe erklären",
     desc:"Gleichschaltung · Antisemitismus · Führerprinzip · Lebensraum · Ideologie",
     ref:"AB Baustein 3 | SB S. 136–138",
     exercises:[
-      {
-        type:"mc", afb:1, pts:4,
-        q:"Was versteht man unter dem Begriff 'Gleichschaltung'?",
-        options:[
-          {t:"Die Einführung gleicher Löhne für alle Deutschen.", correct:false},
-          {t:"Die Gleichstellung von Frauen und Männern.", correct:false},
-          {t:"Die Unterordnung aller staatlichen und gesellschaftlichen Bereiche unter die NSDAP.", correct:true},
-          {t:"Die Einführung eines einheitlichen Schulsystems.", correct:false},
-        ],
-        answer:"Gleichschaltung bezeichnet die Unterordnung aller Bereiche des öffentlichen Lebens (Länder, Parteien, Gewerkschaften, Medien) unter die Kontrolle der NSDAP ab 1933."
+      {type:"mc_pool", pool:"gleichschaltung", afb:1, pts:3},
+      {type:"mc_pool", pool:"fuehrerprinzip",  afb:1, pts:3},
+      {type:"open", afb:2, pts:4,
+        q:"Erkläre in 2–3 Sätzen den Begriff 'Antisemitismus'. Was verstanden die Nationalsozialisten darunter?",
+        modelAnswer:"Antisemitismus bezeichnet Feindschaft und Hass gegenüber Juden. Die Nationalsozialisten behaupteten, Juden seien eine 'minderwertige Rasse', die Deutschland schade. Sie machten Juden für alle Probleme (Niederlage 1918, Wirtschaftskrise) verantwortlich und rechtfertigten so ihre Verfolgung.",
+        rubric:"Begriff korrekt erklärt (Feindschaft/Hass gegen Juden), NS-Kontext genannt (Rassenideologie), mind. ein Beispiel für Auswirkungen/Behauptungen"
       },
-      {
-        type:"match", afb:1, pts:5,
-        q:"Ordne die Begriffe den richtigen Erklärungen zu.",
-        pairs:[
-          ["Antisemitismus","Feindschaft und Hass gegenüber Juden"],
-          ["Führerprinzip","Unbedingte Unterordnung unter Hitler"],
-          ["Lebensraum","Forderung nach Land im Osten Europas"],
-          ["Ideologie","Weltanschauung / politisches Gedankensystem"],
-          ["Mefo-Wechsel","Versteckte Staatsschulden für Rüstung"],
-        ]
+      {type:"open", afb:2, pts:4,
+        q:"Was verstand Hitler unter dem Begriff 'Lebensraum'? Erkläre in eigenen Worten.",
+        modelAnswer:"Hitler verstand unter 'Lebensraum' die Forderung nach neuem Land für das deutsche Volk – vor allem in Osteuropa (Russland, Ukraine). Er behauptete, Deutschland brauche mehr Platz für seine wachsende Bevölkerung. Die gewaltsame Eroberung dieser Gebiete wurde mit der angeblichen Überlegenheit der deutschen Rasse gerechtfertigt.",
+        rubric:"Geographische Richtung (Osten/Russland/Ukraine) genannt, Begründung durch Rassenideologie erwähnt, Verbindung zu Kriegsziel erkennbar"
       },
-      {
-        type:"open", afb:2, pts:4,
-        q:"Erkläre in 2–3 Sätzen: Was verstand Hitler unter dem Begriff 'Lebensraum'?",
-        answer:"Hitler verstand unter 'Lebensraum' die Forderung nach neuem Land für das deutsche Volk – vor allem in Osteuropa (Russland, Ukraine). Er rechtfertigte die gewaltsame Eroberung dieser Gebiete mit der angeblichen Überlegenheit der deutschen Rasse. Die dort lebende Bevölkerung sollte vertrieben oder vernichtet werden."
-      }
     ]
   },
   {
     id:1, title:"Schriftliche Quelle analysieren",
-    desc:"Quellenvorstellung · Inhalt erschließen · Standpunkt erkennen",
+    desc:"Quellenvorstellung · Inhalt erschließen · Autor-Standpunkt erkennen",
     ref:"AB Baustein 1–3",
     exercises:[
-      {
-        type:"open", afb:1, pts:4,
-        q:"Lies den Quellenausschnitt und stelle ihn strukturiert vor (Autor, Quellenart, Zeit, Thema).",
+      {type:"open", afb:1, pts:4,
         source:'"In erschreckenden Massen wird die Währung von der schrankenlos betriebenen Ausgabewirtschaft der öffentlichen Hand bedroht [...] Keine Notenbank ist imstande, die Ausgabenwirtschaft eines Staates aufrechtzuerhalten gegen eine inflationistische Ausgabepolitik des Staates." — Hjalmar Schacht, Brief an die Reichsbank-Direktoren, 7. Januar 1939',
-        answer:"Autor: Hjalmar Schacht, Präsident der Deutschen Reichsbank. Quellenart: Interner Brief (Primärquelle). Entstehungszeit: 7. Januar 1939. Thema: Schacht warnt vor dem drohenden Staatsbankrott durch die unkontrollierten Ausgaben der NS-Regierung."
+        q:"Stelle diese Quelle strukturiert vor: Wer hat sie verfasst? Was für eine Quelle ist es? Wann entstand sie? An wen ist sie gerichtet?",
+        modelAnswer:"Verfasser: Hjalmar Schacht, Präsident der Deutschen Reichsbank. Quellenart: Interner Brief = Primärquelle. Entstehungszeit: 7. Januar 1939. Adressat: Die Direktoren der Deutschen Reichsbank.",
+        rubric:"Alle vier Angaben vorhanden: Autor (Schacht, Reichsbankpräsident), Quellenart (Brief/Primärquelle), Zeit (Januar 1939), Adressat (Direktoren)"
       },
-      {
-        type:"open", afb:2, pts:5,
-        q:"Welche Kritik übt Schacht in seinem Brief? Erkläre in eigenen Worten.",
-        source:"(Quelle siehe oben)",
-        answer:"Schacht kritisiert, dass die NS-Regierung maßlos Geld ausgibt, ohne es zu haben. Diese 'uferlosen Ausgaben' (vor allem für Rüstung) gefährden die deutsche Währung und drohen den Staat in den Bankrott zu treiben. Keine Notenbank der Welt könne eine solche Ausgabenpolitik dauerhaft stützen."
-      }
+      {type:"open", afb:2, pts:5,
+        source:"(Quelle: Schacht-Brief, 7. Januar 1939 – siehe oben)",
+        q:"Erkläre in eigenen Worten, was Schacht in diesem Brief kritisiert. Was befürchtet er?",
+        modelAnswer:"Schacht kritisiert die maßlosen Staatsausgaben der NS-Regierung. Er befürchtet, dass diese 'uferlosen Ausgaben' (vor allem für Rüstung) die deutsche Währung zerstören und den Staat in den Bankrott treiben. Keine Notenbank könne eine solche Ausgabenpolitik auf Dauer aufrechterhalten.",
+        rubric:"Kritik an Ausgabenpolitik erkannt, Bedrohung der Währung/Staatsbankrott erwähnt, eigene Worte verwendet"
+      },
     ]
   },
   {
     id:2, title:"Stationen auf dem Weg zur NS-Diktatur",
     desc:"Chronik · Ermächtigungsgesetz · Stufenmodell",
-    ref:"Tafelbild Stufenmodell | Artefakt: stephmeu.github.io/Machtergreifung",
+    ref:"Tafelbild Stufenmodell | stephmeu.github.io/Machtergreifung",
     exercises:[
-      {
-        type:"order", afb:1, pts:6,
-        q:"Bringe die Ereignisse in die richtige Reihenfolge (1 = zuerst, 6 = zuletzt).",
-        items:[
-          {t:"Ermächtigungsgesetz – Hitler regiert ohne Parlament",correct:4},
-          {t:"30. Januar 1933: Hitler wird Reichskanzler",correct:1},
-          {t:"Gleichschaltung der Länder, Parteien und Gewerkschaften",correct:5},
-          {t:"Reichstagsbrand – Kommunisten werden beschuldigt",correct:2},
-          {t:"Reichstagsbrandverordnung – Grundrechte außer Kraft",correct:3},
-          {t:"Vereinigung Kanzler + Präsident: Hitler = Führer",correct:6},
-        ],
-        answer:"Richtige Reihenfolge: 1) Hitler Reichskanzler (30.1.1933) → 2) Reichstagsbrand (27./28.2.1933) → 3) Reichstagsbrandverordnung (28.2.1933) → 4) Ermächtigungsgesetz (23.3.1933) → 5) Gleichschaltung (März–Juli 1933) → 6) Hitler = Führer und Reichskanzler (2.8.1934)"
+      {type:"mc_pool", pool:"diktatur", afb:1, pts:3},
+      {type:"open", afb:2, pts:5,
+        q:"Erkläre, was das Ermächtigungsgesetz (23. März 1933) war und welche Folgen es hatte.",
+        modelAnswer:"Das Ermächtigungsgesetz erlaubte der Reichsregierung, Gesetze ohne Zustimmung des Reichstags zu erlassen – diese Gesetze durften sogar von der Weimarer Verfassung abweichen. Folge: Das Parlament verlor seine Macht. Hitler konnte nun alleine regieren. Die parlamentarische Demokratie war damit praktisch abgeschafft.",
+        rubric:"Inhalt korrekt (Gesetze ohne Reichstag), Folge genannt (Parlament entmachtet, Hitler regiert allein)"
       },
-      {
-        type:"open", afb:2, pts:4,
-        q:"Erkläre: Was erlaubte das Ermächtigungsgesetz (23. März 1933) Hitler?",
-        answer:"Das Ermächtigungsgesetz erlaubte der Reichsregierung, Gesetze ohne Zustimmung des Reichstags zu erlassen. Diese Gesetze durften sogar von der Weimarer Verfassung abweichen. Damit war die parlamentarische Demokratie faktisch abgeschafft – Hitler konnte alleine regieren."
-      }
+      {type:"open", afb:3, pts:5,
+        q:"Beurteile: War das Ermächtigungsgesetz ein legaler Akt – oder war es der Beginn der Diktatur? Begründe deine Antwort.",
+        modelAnswer:"Einerseits wurde das Gesetz formal mit der nötigen Zweidrittelmehrheit verabschiedet – das klingt legal. Andererseits waren KPD-Abgeordnete verhaftet, SA und SS bedrohten das Parlament, die Abstimmung war nicht frei. Die Befristung bis 1937 wurde nie eingehalten. Das Gesetz war damit nur scheinbar legal – es nutzte die Form der Demokratie, um sie zu zerstören.",
+        rubric:"Beide Seiten dargestellt (formal legal / faktisch erzwungen), eigenes Urteil formuliert, mindestens ein konkretes Argument"
+      },
     ]
   },
   {
@@ -211,45 +327,34 @@ const SECTIONS = [
     desc:"Rassismus · Antisemitismus · Lebensraum · Führerprinzip · Gewalt",
     ref:"SB S. 136–138",
     exercises:[
-      {
-        type:"mc", afb:1, pts:4,
-        q:"Welche der folgenden Aussagen entspricht NICHT der NS-Ideologie?",
-        options:[
-          {t:"Die Deutschen gehören zu einer überlegenen Rasse.", correct:false},
-          {t:"Das Volk braucht mehr Lebensraum im Osten.", correct:false},
-          {t:"Alle Menschen sind gleichwertig und haben gleiche Rechte.", correct:true},
-          {t:"Der Führer hat uneingeschränkte Macht.", correct:false},
-        ],
-        answer:"'Alle Menschen sind gleichwertig' widerspricht der NS-Ideologie grundlegend. Die Nazis glaubten an eine rassische Hierarchie mit den 'Ariern' an der Spitze und sahen andere Völker als minderwertig an."
+      {type:"mc_pool", pool:"ideologie", afb:1, pts:3},
+      {type:"open", afb:2, pts:4,
+        q:"Erkläre, welche vier Grundelemente die NS-Ideologie nach Hitler prägten.",
+        modelAnswer:"1) Rassismus/Antisemitismus: Hitler glaubte an eine rassische Hierarchie mit den 'Ariern' an der Spitze, Juden als 'Feinde'. 2) Lebensraum: Deutschland brauche Land im Osten für sein Volk. 3) Führerprinzip: Ein allmächtiger Führer regiert ohne Widerspruch. 4) Kampf/Gewalt: Das Leben ist ein ewiger Kampf der Rassen – nur der Stärkere überlebt.",
+        rubric:"Mindestens 3 der 4 Elemente korrekt benannt und kurz erklärt"
       },
-      {
-        type:"open", afb:3, pts:6,
-        q:"Beurteile: Warum konnten die Ideen Hitlers (aus 'Mein Kampf') für viele Deutsche attraktiv erscheinen? Nenne zwei Gründe.",
-        answer:"1) In der Weltwirtschaftskrise boten Hitlers einfache Erklärungen und Feindbilder Orientierung – die Schuld wurde auf 'die Juden', 'die Kommunisten' gegeben. Das gab Menschen Halt in einer unsicheren Zeit. / 2) Das Versprechen von nationaler Größe und Stärke sprach viele an, die die 'Schmach von Versailles' als tief verletzend empfanden."
-      }
+      {type:"open", afb:3, pts:5,
+        q:"Beurteile: Warum konnten Hitlers Ideen für viele Deutsche in der Wirtschaftskrise attraktiv erscheinen? Nenne zwei Gründe.",
+        modelAnswer:"1) Einfache Feindbilder: In der Not der Weltwirtschaftskrise boten Hitlers 'Erklärungen' (Schuld der Juden, Kommunisten) Orientierung. Statt komplexe Ursachen zu suchen, gab es klare Schuldige. 2) Versprechen von Stärke: Nach der 'Schmach von Versailles' sprach das Versprechen nationaler Größe und Stärke viele Deutsche an, die sich gedemütigt fühlten.",
+        rubric:"Zwei Gründe genannt, historischer Kontext (Krise, Versailles) einbezogen"
+      },
     ]
   },
   {
     id:4, title:"Reichstagsbrand & Verordnung",
-    desc:"Ursachen · Reichstagsbrandverordnung · Folgen für Grundrechte",
+    desc:"Reichstagsbrandverordnung · Grundrechte · Folgen",
     ref:"AB Baustein 1",
     exercises:[
-      {
-        type:"mc", afb:1, pts:4,
-        q:"Welche Grundrechte wurden durch die Reichstagsbrandverordnung (28.2.1933) außer Kraft gesetzt?",
-        options:[
-          {t:"Nur die Pressefreiheit.", correct:false},
-          {t:"Meinungsfreiheit, Pressefreiheit, Versammlungsfreiheit, Briefgeheimnis und mehr.", correct:true},
-          {t:"Das Wahlrecht der Frauen.", correct:false},
-          {t:"Das Recht auf Arbeit.", correct:false},
-        ],
-        answer:"Die Reichstagsbrandverordnung setzte Artikel 114, 115, 117, 118, 123, 124 und 153 der Weimarer Verfassung außer Kraft – darunter persönliche Freiheit, Meinungsfreiheit, Pressefreiheit, Versammlungsrecht und Briefgeheimnis."
+      {type:"open", afb:1, pts:3,
+        q:"Was passierte in der Nacht vom 27. auf den 28. Februar 1933? Beschreibe in 2–3 Sätzen.",
+        modelAnswer:"In der Nacht zum 28. Februar 1933 brannte der Reichstag in Berlin. Der Niederländer Marinus van der Lubbe wurde am Tatort verhaftet. Die NSDAP machte sofort die Kommunisten (KPD) für den Brand verantwortlich – obwohl bis heute umstritten ist, wer wirklich dahintersteckte.",
+        rubric:"Datum/Ereignis korrekt, Verhaftung van der Lubbes erwähnt, NS-Schuldzuweisung an KPD genannt"
       },
-      {
-        type:"open", afb:2, pts:5,
-        q:"Erkläre, womit die NS-Regierung den Erlass der Reichstagsbrandverordnung begründete – und was die tatsächlichen Folgen waren.",
-        answer:"Begründung: Die Verordnung wurde mit der angeblichen kommunistischen Bedrohung begründet – der Reichstagsbrand sei ein kommunistischer Anschlag gewesen. / Folgen: Politische Gegner (vor allem KPD und SPD) konnten ohne Rechtsgrundlage verhaftet werden. Grundrechte galten nicht mehr. Die NSDAP nutzte die Verordnung zur Ausschaltung der politischen Opposition."
-      }
+      {type:"open", afb:2, pts:5,
+        q:"Erkläre, was die Reichstagsbrandverordnung (28. Februar 1933) war und welche Grundrechte sie außer Kraft setzte.",
+        modelAnswer:"Die Reichstagsbrandverordnung wurde einen Tag nach dem Brand erlassen. Sie setzte wichtige Grundrechte der Weimarer Verfassung außer Kraft: Meinungsfreiheit, Pressefreiheit, Versammlungsfreiheit, das Briefgeheimnis und die persönliche Freiheit. Damit konnten politische Gegner (v.a. KPD, SPD) ohne richterliche Kontrolle verhaftet werden.",
+        rubric:"Definition der Verordnung, mindestens 3 Grundrechte genannt, Folge (Verhaftungen möglich) erklärt"
+      },
     ]
   },
   {
@@ -257,318 +362,345 @@ const SECTIONS = [
     desc:"Arbeitslosigkeit · Mefo-Wechsel · Rüstungskonjunktur · Schein vs. Wirklichkeit",
     ref:"SB S. 148–149",
     exercises:[
-      {
-        type:"open", afb:1, pts:3,
-        q:"Beschreibe, was das Diagramm M1 (Arbeitslosigkeit 1932–1938) zeigt. Nutze Zahlen.",
-        answer:"Die Arbeitslosigkeit sank von ca. 6 Millionen Arbeitslosen im Jahr 1932 auf nahezu 0 im Jahr 1938. Die Kurve fällt stetig ab – besonders stark zwischen 1933 und 1936."
-      },
-      {
-        type:"open", afb:2, pts:5,
+      {type:"mc_pool", pool:"wirtschaft", afb:1, pts:3},
+      {type:"open", afb:2, pts:5,
         q:"Erkläre, warum der Wirtschaftsaufschwung nach 1933 kein 'echtes' Wirtschaftswunder war. Nenne zwei Hintergründe.",
-        answer:"1) Mefo-Wechsel: Der Staat bezahlte Rüstungsunternehmen mit Schuldversprechen statt echtem Geld. Die Schulden wuchsen auf 12 Mrd. RM – geheim gehalten. / 2) Rüstungskonjunktur: Die Vollbeschäftigung entstand vor allem durch Rüstungsausgaben. Das war keine nachhaltige Wirtschaft, sondern Kriegsvorbereitung."
+        modelAnswer:"1) Mefo-Wechsel: Der Staat bezahlte Rüstungsunternehmen nicht mit echtem Geld, sondern mit geheimen Schuldversprechen. Die Staatsverschuldung wuchs auf über 12 Mrd. RM – ohne dass die Öffentlichkeit es wusste. 2) Rüstungskonjunktur: Die Vollbeschäftigung entstand vor allem durch massiv gestiegene Rüstungsausgaben. Das war Kriegsvorbereitung, kein nachhaltiges Wirtschaftswachstum.",
+        rubric:"Mefo-Wechsel erklärt, Rüstung als Hauptursache genannt, Nachhaltigkeitsproblem angesprochen"
       },
-      {
-        type:"open", afb:3, pts:6,
-        q:"Beurteile mithilfe der Quelle M1 (Schacht) und deinem Wissen: War der NS-Wirtschaftsaufschwung ein echter Erfolg?",
-        source:'"Keine Notenbank ist imstande, die Ausgabenwirtschaft eines Staates aufrechtzuerhalten gegen eine inflationistische Ausgabepolitik des Staates." — Schacht, Januar 1939',
-        answer:"Einerseits: Die Arbeitslosigkeit sank real, Menschen hatten wieder Arbeit und Einkommen. Das war für viele Zeitgenossen eine echte Verbesserung (vgl. Eva Sternheim). / Andererseits: Schacht selbst warnt 1939 vor dem drohenden Staatsbankrott. Der Aufschwung beruhte auf versteckten Schulden und Rüstungsausgaben – kein nachhaltiger Wohlstand. / Fazit: Kein echtes Wirtschaftswunder, sondern eine Scheinkonjunktur auf Kosten zukünftiger Generationen und zur Vorbereitung des Krieges."
-      }
+      {type:"open", afb:3, pts:6,
+        source:'"Keine Notenbank ist imstande, die Ausgabenwirtschaft eines Staates aufrechtzuerhalten gegen eine inflationistische Ausgabepolitik des Staates." — Hjalmar Schacht, Januar 1939',
+        q:"Beurteile mithilfe der Quelle: War der NS-Wirtschaftsaufschwung ein echter Erfolg? Nenne Argumente für beide Seiten und formuliere ein Fazit.",
+        modelAnswer:"Für Erfolg: Arbeitslosigkeit sank von 6 Mio. auf ~0. Menschen wie Eva Sternheim erlebten reale Verbesserungen im Alltag. / Gegen Erfolg: Schacht selbst warnt 1939 vor dem Staatsbankrott – die Ausgabenpolitik sei nicht tragfähig. Der Aufschwung beruhte auf Schulden und Rüstung, nicht auf echtem Wohlstand. / Fazit: Kein echtes Wirtschaftswunder – sondern eine Scheinkonjunktur zur Kriegsvorbereitung.",
+        rubric:"Beide Seiten argumentiert, Schacht-Quelle einbezogen, klares Fazit formuliert"
+      },
     ]
   },
   {
     id:6, title:"Warum unterstützten viele Deutsche Hitler?",
-    desc:"Wirtschaft · Propaganda · Gleichschaltung · Zustimmung",
+    desc:"Wirtschaft · Propaganda · Zustimmung · Zeitzeugen",
     ref:"SB S. 148–149",
     exercises:[
-      {
-        type:"mc", afb:1, pts:3,
-        q:"Welcher der folgenden Faktoren erklärt NICHT, warum viele Deutsche Hitler unterstützten?",
-        options:[
-          {t:"Der Wirtschaftsaufschwung und sinkende Arbeitslosigkeit.", correct:false},
-          {t:"Die Abschaffung des Versailler Vertrags versprechend.", correct:false},
-          {t:"Hitlers freie und demokratische Wahl durch alle Deutschen.", correct:true},
-          {t:"Propaganda über Volksempfänger und gleichgeschaltete Medien.", correct:false},
-        ],
-        answer:"Hitler wurde nie in einer freien, demokratischen Wahl von allen Deutschen gewählt. Er wurde am 30. Januar 1933 vom Reichspräsidenten zum Reichskanzler ernannt. Spätere Wahlen fanden unter Druck und Terror statt."
+      {type:"open", afb:1, pts:3,
+        q:"Nenne drei Gründe, warum viele Deutsche Hitler nach 1933 unterstützten.",
+        modelAnswer:"1) Wirtschaftlicher Aufschwung: Die Arbeitslosigkeit sank drastisch – viele Menschen bekamen wieder Arbeit und Einkommen. 2) Propaganda: Goebbels' Ministerium kontrollierte alle Medien (Radio, Zeitungen, Film). Die Menschen hörten nur Positives über die NS-Regierung. 3) Nationalismus: Das Versprechen, die 'Schmach von Versailles' rückgängig zu machen, sprach viele an.",
+        rubric:"Mindestens 2 der 3 Gründe korrekt genannt (Wirtschaft, Propaganda, Nationalismus)"
       },
-      {
-        type:"open", afb:3, pts:6,
-        q:"Beurteile: Hätten die Menschen 1933 erkennen können, wohin Hitlers Politik führen würde? Begründe deine Antwort.",
-        answer:"Einerseits: 'Mein Kampf' war öffentlich zugänglich – Hitlers Pläne (Antisemitismus, Lebensraum, Diktatur) waren bekannt. Wer das Buch gelesen hatte, wusste, was kommen würde. / Andererseits: Propaganda verhinderte kritisches Denken. Viele erlebten nur die positiven Seiten (Arbeit, Stabilität). Angst vor Repression hielt viele davon ab, offen zu zweifeln. / Fazit: Hinweise gab es – aber Propaganda, Gleichschaltung und die eigene Not haben viele daran gehindert, das volle Bild zu sehen."
-      }
+      {type:"open", afb:3, pts:6,
+        q:"Beurteile: Hätten die Deutschen 1933 erkennen können, wohin Hitlers Politik führen würde? Berücksichtige beide Seiten.",
+        modelAnswer:"Einerseits: 'Mein Kampf' war seit 1925 öffentlich – Hitlers Pläne (Antisemitismus, Lebensraum, Diktatur) waren bekannt. Wer genau hinschaute, konnte es ahnen. / Andererseits: Propaganda verhinderte kritisches Denken. Viele erlebten nur die positiven Seiten (Arbeit, Ordnung). Angst vor Repression hielt viele davon ab, zu zweifeln. Informationen über Hintergründe (z.B. Mefo-Wechsel) wurden aktiv verborgen. / Fazit: Hinweise gab es – aber Propaganda, Gleichschaltung und persönliche Not haben viele daran gehindert, das volle Bild zu sehen.",
+        rubric:"Beide Perspektiven vorhanden, 'Mein Kampf' oder Propaganda erwähnt, differenziertes Fazit"
+      },
     ]
   }
 ];
 
-let currentSection = 'overview';
-const answered = {};
-const matchState = {};
+// ── RENDER OVERVIEW ────────────────────────────
+function renderOverview() {
+  const total = SECTIONS.length;
+  const done  = SECTIONS.filter(s=>STATUS[s.id]==='sicher').length;
+  const warn  = SECTIONS.filter(s=>STATUS[s.id]==='unsicher').length;
+  const allAnswered = SECTIONS.every(s=>STATUS[s.id]);
 
-function showSection(id) {
-  currentSection = id;
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  if (id === 'overview') {
+  let html = `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:14px">
+    <div class="ov-card"><div class="ov-icon">✅</div><div class="ov-label">Sicher</div><div class="ov-val green">${done}</div></div>
+    <div class="ov-card"><div class="ov-icon">⚠️</div><div class="ov-label">Unsicher</div><div class="ov-val orange">${warn}</div></div>
+    <div class="ov-card"><div class="ov-icon">📋</div><div class="ov-label">Noch offen</div><div class="ov-val">${total-done-warn}</div></div>
+  </div>`;
+
+  if(warn>0) html+=`<div class="hint-box">⚠️ <strong>${warn} unsichere${warn>1?' Themen':' Thema'}</strong> – klicke auf die orange markierten Themen und übe dort!</div>`;
+  if(done===total) html+=`<div style="background:#e8f5e9;border-left:4px solid #1A5E36;border-radius:0 8px 8px 0;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#1a3a1a">🎉 <strong>Super!</strong> Alle Lernziele bearbeitet. Viel Erfolg bei der Überprüfung!</div>`;
+
+  SECTIONS.forEach(s=>{
+    const st=STATUS[s.id];
+    const badge=st==='sicher'?'<span class="badge sicher">✓ Sicher</span>':st==='unsicher'?'<span class="badge unsicher">⚠ Unsicher</span>':'<span class="badge offen">Offen</span>';
+    const sc=SCORES[s.id];
+    const scText=sc?`<span style="font-size:11px;color:#888;margin-left:8px">${sc.points}/${sc.max} Pkt.</span>`:'';
+    html+=`<div class="card" onclick="showSection(${s.id})" style="cursor:pointer">
+      <div class="card-header">
+        <div><h2>${s.title}${scText}</h2><p style="font-size:12px;color:#888;margin-top:2px">${s.desc}</p></div>
+        <div style="display:flex;align-items:center;gap:6px">${badge}<span style="color:#ccc">›</span></div>
+      </div>
+    </div>`;
+  });
+
+  if(allAnswered) html+=`<div class="eval-btn-wrap"><button class="eval-btn" onclick="showSection('eval')">📊 Gesamtauswertung ansehen</button></div>`;
+
+  document.getElementById('mainContent').innerHTML=html;
+}
+
+// ── RENDER SECTION ─────────────────────────────
+function renderSection(sec) {
+  const st=STATUS[sec.id];
+  let exHtml='';
+  sec.exercises.forEach((ex,i)=>{
+    const afbLabel=ex.afb===1?'AFB I – Wiedergabe':ex.afb===2?'AFB II – Analyse/Erklärung':'AFB III – Beurteilung';
+    exHtml+=`<div class="exercise afb${ex.afb}" id="ex-${sec.id}-${i}">
+      <div class="afb-badge">${afbLabel} · ${ex.pts} Punkte</div>`;
+
+    if(ex.type==='mc_pool'){
+      const q=pickMC(MC_POOLS[ex.pool])[0];
+      const opts=shuffleOpts(q.opts);
+      exHtml+=`<div class="question">${q.q}</div>
+        <div class="mc-opts" id="mc-${sec.id}-${i}">`;
+      opts.forEach((o,oi)=>{
+        exHtml+=`<div class="mc-opt" id="mo-${sec.id}-${i}-${oi}" onclick="checkMC(${sec.id},${i},${oi},${o.c})">
+          <div class="opt-icon" id="oi-${sec.id}-${i}-${oi}"></div>${o.t}
+        </div>`;
+      });
+      exHtml+=`</div>`;
+    } else if(ex.type==='open'){
+      if(ex.source) exHtml+=`<div class="source-box">${ex.source}</div>`;
+      exHtml+=`<div class="question">${ex.q}</div>
+        <textarea class="answer-area" id="ta-${sec.id}-${i}" placeholder="Schreibe deine Antwort hier…" rows="4"></textarea>
+        <button class="submit-btn" id="sb-${sec.id}-${i}" onclick="submitOpen(${sec.id},${i})">✓ Antwort bewerten lassen</button>
+        <div class="ai-feedback" id="fb-${sec.id}-${i}"></div>`;
+    }
+    exHtml+=`</div>`;
+  });
+
+  const html=`
+  <button class="back-btn" onclick="showSection('overview')">‹ Zurück zur Übersicht</button>
+  <div class="card">
+    <div class="card-header" onclick="toggleBody(${sec.id})" style="cursor:pointer">
+      <div>
+        <h2>${sec.title}</h2>
+        <p style="font-size:12px;color:#888;margin-top:2px">${sec.desc}</p>
+        <p style="font-size:11px;color:#bbb;margin-top:2px">📚 ${sec.ref}</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span class="badge ${st||'offen'}">${st==='sicher'?'✓ Sicher':st==='unsicher'?'⚠ Unsicher':'Offen'}</span>
+        <span id="chev-${sec.id}" style="color:#aaa;font-size:16px">▼</span>
+      </div>
+    </div>
+    <div id="body-${sec.id}">
+      <div class="self-assess">
+        <p>Wie sicher fühlst du dich bei diesem Thema?</p>
+        <div class="assess-btns">
+          <button class="assess-btn ${st==='sicher'?'sel-s':''}" onclick="setStatus(${sec.id},'sicher',event)">✅ Ich kann das erklären</button>
+          <button class="assess-btn ${st==='unsicher'?'sel-u':''}" onclick="setStatus(${sec.id},'unsicher',event)">⚠️ Ich muss noch üben</button>
+        </div>
+      </div>
+      <div class="exercises">
+        <div class="ex-section-title">Übungsaufgaben</div>
+        ${exHtml}
+      </div>
+      ${st==='unsicher'?`<div style="padding:10px 18px 14px"><div class="hint-box">💡 <strong>Tipp:</strong> Schau ins Schulbuch (${sec.ref}), lies nochmal durch und versuche dann die Aufgaben erneut. Schreibe immer zuerst deine eigene Antwort, bevor du die KI-Bewertung anforderst!</div></div>`:''}
+    </div>
+  </div>`;
+
+  document.getElementById('mainContent').innerHTML=html;
+}
+
+// ── TOGGLE ─────────────────────────────────────
+function toggleBody(id){
+  const body=document.getElementById('body-'+id);
+  const ch=document.getElementById('chev-'+id);
+  const vis=body.style.display!=='none';
+  body.style.display=vis?'none':'block';
+  ch.textContent=vis?'›':'▼';
+}
+
+// ── MC CHECK ───────────────────────────────────
+function checkMC(sid,eid,oi,correct){
+  document.querySelectorAll(`[id^="mo-${sid}-${eid}-"]`).forEach(el=>{
+    el.classList.add('locked');
+    el.style.pointerEvents='none';
+  });
+  const el=document.getElementById(`mo-${sid}-${eid}-${oi}`);
+  const ic=document.getElementById(`oi-${sid}-${eid}-${oi}`);
+  el.classList.add(correct?'correct':'wrong');
+  ic.textContent=correct?'✓':'✗';
+
+  // If wrong, show correct
+  if(!correct){
+    document.querySelectorAll(`[id^="mo-${sid}-${eid}-"]`).forEach((el2,i)=>{
+      const allOpts=MC_POOLS[SECTIONS[sid].exercises[eid].pool];
+      // We can't easily recover which was correct without storing state
+    });
+  }
+
+  if(!SCORES[sid]) SCORES[sid]={points:0,max:0};
+  const pts=SECTIONS[sid].exercises[eid].pts;
+  if(!AI_RESULTS[`${sid}-${eid}`]){
+    AI_RESULTS[`${sid}-${eid}`]={done:true};
+    SCORES[sid].max+=pts;
+    if(correct) SCORES[sid].points+=pts;
+  }
+}
+
+// ── OPEN SUBMIT + AI ───────────────────────────
+async function submitOpen(sid,eid){
+  const ta=document.getElementById(`ta-${sid}-${eid}`);
+  const fb=document.getElementById(`fb-${sid}-${eid}`);
+  const btn=document.getElementById(`sb-${sid}-${eid}`);
+  const answer=ta.value.trim();
+  if(!answer){alert('Bitte zuerst eine Antwort eingeben!');return;}
+
+  btn.disabled=true;
+  btn.textContent='⏳ Wird bewertet…';
+  fb.className='ai-feedback loading visible';
+  fb.textContent='Claude bewertet deine Antwort…';
+
+  const ex=SECTIONS[sid].exercises[eid];
+  const prompt=`Du bist ein erfahrener Geschichtslehrer an einem deutschen Gymnasium (Klasse 9). Bewerte die folgende Schülerantwort.
+
+AUFGABE: ${ex.q}
+${ex.source?'QUELLE: '+ex.source:''}
+MUSTERLÖSUNG: ${ex.modelAnswer}
+BEWERTUNGSKRITERIEN: ${ex.rubric}
+SCHÜLERANTWORT: "${answer}"
+
+Antworte NUR im folgenden JSON-Format (kein anderer Text):
+{
+  "rating": "good" oder "partial" oder "poor",
+  "feedback": "1-2 Sätze direktes, ermutigigendes Feedback auf Deutsch, was gut war",
+  "missing": "1 Satz was noch fehlt oder verbessert werden kann (leer lassen wenn rating=good)",
+  "points": Zahl zwischen 0 und ${ex.pts}
+}`;
+
+  try {
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:400,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data=await res.json();
+    const raw=data.content[0].text.replace(/```json|```/g,'').trim();
+    const parsed=JSON.parse(raw);
+
+    const icons={good:'✅',partial:'⚠️',poor:'❌'};
+    const labels={good:'Gut gemacht!',partial:'Fast richtig!',poor:'Überarbeiten'};
+    const colors={good:'good',partial:'partial',poor:'poor'};
+
+    fb.className=`ai-feedback ${colors[parsed.rating]} visible`;
+    fb.innerHTML=`<div class="fb-header">${icons[parsed.rating]} ${labels[parsed.rating]} (${parsed.points}/${ex.pts} Pkt.)</div>
+      <div>${parsed.feedback}</div>
+      ${parsed.missing?`<div style="margin-top:6px;color:#777">💡 ${parsed.missing}</div>`:''}
+      <div class="model-answer"><strong>Musterlösung:</strong> ${ex.modelAnswer}</div>`;
+
+    if(!AI_RESULTS[`${sid}-${eid}`]){
+      AI_RESULTS[`${sid}-${eid}`]={done:true,rating:parsed.rating};
+      if(!SCORES[sid]) SCORES[sid]={points:0,max:0};
+      SCORES[sid].max+=ex.pts;
+      SCORES[sid].points+=parsed.points||0;
+    }
+
+    btn.textContent='✓ Bewertet';
+    ta.readOnly=true;
+  } catch(e){
+    fb.className='ai-feedback poor visible';
+    fb.innerHTML=`<div class="fb-header">❌ Verbindungsfehler</div>Bewertung nicht möglich. <div class="model-answer"><strong>Musterlösung:</strong> ${ex.modelAnswer}</div>`;
+    btn.textContent='Erneut versuchen';
+    btn.disabled=false;
+  }
+}
+
+// ── STATUS ─────────────────────────────────────
+function setStatus(id,st,event){
+  STATUS[id]=st;
+  updateProgress();
+  document.querySelectorAll('.assess-btn').forEach(b=>b.classList.remove('sel-s','sel-u'));
+  if(event&&event.target) event.target.classList.add(st==='sicher'?'sel-s':'sel-u');
+  const nav=document.getElementById('nav-'+id);
+  if(nav){
+    nav.className='nav-btn active';
+    if(st==='sicher') nav.classList.add('done');
+    else nav.classList.add('warn');
+  }
+  renderSection(SECTIONS[id]);
+}
+
+function updateProgress(){
+  const done=Object.keys(STATUS).filter(k=>STATUS[k]==='sicher').length;
+  const total=SECTIONS.length;
+  const pct=Math.round(done/total*100);
+  document.getElementById('progBar').style.width=pct+'%';
+  document.getElementById('progLabel').textContent=`${done} von ${total} Lernzielen als "Sicher" markiert`;
+  SECTIONS.forEach(s=>{
+    const nb=document.getElementById('nav-'+s.id);
+    if(!nb) return;
+    const wasActive=nb.classList.contains('active');
+    nb.className='nav-btn'+(wasActive?' active':'');
+    if(STATUS[s.id]==='sicher') nb.classList.add('done');
+    else if(STATUS[s.id]==='unsicher') nb.classList.add('warn');
+  });
+}
+
+// ── FINAL EVALUATION ───────────────────────────
+function renderEval(){
+  const sicher=SECTIONS.filter(s=>STATUS[s.id]==='sicher').length;
+  const unsicher=SECTIONS.filter(s=>STATUS[s.id]==='unsicher').length;
+  const total=SECTIONS.length;
+  const pct=Math.round(sicher/total*100);
+
+  let totalPts=0,maxPts=0;
+  SECTIONS.forEach(s=>{
+    if(SCORES[s.id]){totalPts+=SCORES[s.id].points;maxPts+=SCORES[s.id].max;}
+  });
+
+  const cat=pct>=80?'great':pct>=50?'good':'needs-work';
+  const emoji=pct>=80?'🎉':pct>=50?'👍':'💪';
+  const msg=pct>=80?'Sehr gut vorbereitet!':pct>=50?'Gut auf dem Weg!':'Noch Übungsbedarf';
+  const sub=pct>=80?'Du bist bereit für die Überprüfung.':pct>=50?'Arbeite noch an den unsicheren Themen.':'Schau dir die roten Bereiche nochmal an.';
+
+  let topicsHtml='';
+  SECTIONS.forEach(s=>{
+    const st=STATUS[s.id];
+    const sc=SCORES[s.id];
+    const icon=st==='sicher'?'✅':st==='unsicher'?'⚠️':'⭕';
+    const tbClass=st==='sicher'?'gut':st==='unsicher'?'mittel':'schwach';
+    const tbLabel=st==='sicher'?'Sicher':st==='unsicher'?'Üben!':'Nicht bearbeitet';
+    const scText=sc?` · ${sc.points}/${sc.max} Pkt.`:'';
+    topicsHtml+=`<div class="topic-result">
+      <div class="tr-icon">${icon}</div>
+      <div class="tr-info"><div class="tr-title">${s.title}</div><div class="tr-score">${s.desc}${scText}</div></div>
+      <div class="tr-badge ${tbClass}">${tbLabel}</div>
+    </div>`;
+  });
+
+  const scoreText=maxPts>0?`<div style="font-size:13px;color:#555;margin-top:4px">${totalPts} von ${maxPts} bewerteten Punkten</div>`:'';
+
+  const html=`
+  <button class="back-btn" onclick="showSection('overview')">‹ Zurück zur Übersicht</button>
+  <div class="card">
+    <div class="eval-wrap">
+      <div class="eval-header ${cat}">
+        <div class="eval-score">${emoji} ${pct}%</div>
+        <div class="eval-msg">${msg}</div>
+        <div class="eval-sub">${sub}</div>
+        ${scoreText}
+      </div>
+      <div style="font-size:13px;font-weight:600;color:#555;margin-bottom:8px;letter-spacing:.05em;text-transform:uppercase">Thema für Thema</div>
+      <div class="topic-results">${topicsHtml}</div>
+      ${unsicher>0?`<div class="hint-box" style="margin-top:12px">⚠️ <strong>Fokus für die Überprüfung:</strong> Geh die ${unsicher} unsicheren Themen nochmal durch – besonders die Aufgaben vom Typ AFB II und III!</div>`:''}
+      <button class="restart-btn" onclick="showSection('overview')">🔄 Zurück – nochmal üben</button>
+    </div>
+  </div>`;
+
+  document.getElementById('mainContent').innerHTML=html;
+}
+
+// ── NAVIGATION ─────────────────────────────────
+function showSection(id){
+  currentSection=id;
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if(id==='overview'){
     document.querySelector('.nav-btn:first-child').classList.add('active');
     renderOverview();
+  } else if(id==='eval'){
+    renderEval();
   } else {
-    document.getElementById('nav-'+id)?.classList.add('active');
+    const nb=document.getElementById('nav-'+id);
+    if(nb) nb.classList.add('active');
     renderSection(SECTIONS[id]);
   }
 }
 
-function renderOverview() {
-  const total = SECTIONS.length;
-  const done = SECTIONS.filter(s => STATUS[s.id] === 'sicher').length;
-  const warn = SECTIONS.filter(s => STATUS[s.id] === 'unsicher').length;
-  const offen = total - done - warn;
-
-  let html = `
-  <div class="sec-div" style="padding-top:4px">Dein Lernstand</div>
-  <div class="overview-grid">
-    <div class="ov-card green"><div class="ov-icon">✅</div><div class="ov-label">Sicher</div><div class="ov-val">${done}</div></div>
-    <div class="ov-card orange"><div class="ov-icon">⚠️</div><div class="ov-label">Unsicher</div><div class="ov-val">${warn}</div></div>
-    <div class="ov-card"><div class="ov-icon">📋</div><div class="ov-label">Noch offen</div><div class="ov-val">${offen}</div></div>
-    <div class="ov-card"><div class="ov-icon">🎯</div><div class="ov-label">Lernziele</div><div class="ov-val">${total}</div></div>
-  </div>`;
-
-  if (warn > 0) {
-    html += `<div style="background:#fff8e1;border-left:4px solid #f39c12;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:#5d4037">
-      <strong>Hinweis:</strong> Du hast ${warn} Bereich${warn>1?'e':''} als unsicher markiert. Klicke auf die markierten Themen und übe gezielt dort!
-    </div>`;
-  }
-  if (done === total) {
-    html += `<div style="background:#e8f5e9;border-left:4px solid #1A5E36;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0;font-size:14px;color:#1a3a1a">
-      <strong>Super!</strong> Du hast alle Lernziele bearbeitet. Viel Erfolg bei der Überprüfung! 🎉
-    </div>`;
-  }
-
-  html += `<div class="sec-div" style="margin-top:16px">Alle Themen</div>`;
-  SECTIONS.forEach(s => {
-    const st = STATUS[s.id];
-    const badge = st === 'sicher' ? '<span class="badge sicher">Sicher ✓</span>' :
-                  st === 'unsicher' ? '<span class="badge unsicher">Unsicher ⚠</span>' :
-                  '<span class="badge offen">Noch offen</span>';
-    html += `<div class="topic-card" onclick="showSection(${s.id})" style="cursor:pointer">
-      <div class="topic-header">
-        <div><h2>${s.title}</h2><p style="font-size:13px;color:#888;margin-top:3px">${s.desc}</p></div>
-        <div class="topic-status">${badge}<span style="font-size:18px;color:#999">›</span></div>
-      </div>
-    </div>`;
-  });
-
-  document.getElementById('mainContent').innerHTML = html;
-}
-
-function renderSection(sec) {
-  let exHtml = '';
-  sec.exercises.forEach((ex, i) => {
-    const afbLabel = ex.afb === 1 ? 'AFB I – Wiedergabe' : ex.afb === 2 ? 'AFB II – Analyse' : 'AFB III – Beurteilung';
-    const afbClass = 'afb'+ex.afb;
-    exHtml += `<div class="exercise ${afbClass}" id="ex-${sec.id}-${i}">
-      <div class="afb-badge">${afbLabel}</div>
-      <div class="question">${ex.q}</div>`;
-
-    if (ex.source) exHtml += `<div class="source-box">${ex.source}</div>`;
-
-    if (ex.type === 'open') {
-      exHtml += `<textarea class="answer-area" placeholder="Deine Antwort hier eingeben..." rows="4"></textarea>`;
-    } else if (ex.type === 'mc') {
-      exHtml += `<div class="mc-options" id="mc-${sec.id}-${i}">`;
-      ex.options.forEach((o, oi) => {
-        exHtml += `<div class="mc-opt" id="mcopt-${sec.id}-${i}-${oi}" onclick="checkMC(${sec.id},${i},${oi},${o.correct})">
-          <input type="radio" name="mc-${sec.id}-${i}"> ${o.t}
-        </div>`;
-      });
-      exHtml += `</div>`;
-    } else if (ex.type === 'order') {
-      const shuffled = [...ex.items].sort(() => Math.random() - 0.5);
-      exHtml += `<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px" id="ord-${sec.id}-${i}">`;
-      shuffled.forEach((item, oi) => {
-        exHtml += `<div style="display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #ddd;border-radius:6px;padding:8px 12px;font-size:14px">
-          <select style="border:1.5px solid #ddd;border-radius:4px;padding:4px;font-size:13px;background:#fff" id="ord-${sec.id}-${i}-${oi}">
-            <option value="">–</option>
-            ${[1,2,3,4,5,6].map(n=>`<option value="${n}">${n}</option>`).join('')}
-          </select>
-          ${item.t}
-        </div>`;
-      });
-      exHtml += `</div>`;
-    } else if (ex.type === 'match') {
-      const terms = ex.pairs.map(p=>p[0]);
-      const defs = [...ex.pairs.map(p=>p[1])].sort(()=>Math.random()-.5);
-      exHtml += `<div class="match-wrap" id="match-wrap-${sec.id}-${i}">
-        <div class="match-col" id="match-terms-${sec.id}-${i}">
-          <div style="font-size:12px;color:#888;margin-bottom:2px;font-weight:600">Begriffe</div>
-          ${terms.map((t,ti)=>`<div class="match-item" id="mt-${sec.id}-${i}-${ti}" onclick="selectMatchTerm(${sec.id},${i},${ti},'${t.replace(/'/g,"\\'")}')">
-            ${t}
-          </div>`).join('')}
-        </div>
-        <div class="match-col" id="match-defs-${sec.id}-${i}">
-          <div style="font-size:12px;color:#888;margin-bottom:2px;font-weight:600">Erklärungen</div>
-          ${defs.map((d,di)=>`<div class="match-item" id="md-${sec.id}-${i}-${di}" onclick="selectMatchDef(${sec.id},${i},${di},'${d.replace(/'/g,"\\'")}')">
-            ${d}
-          </div>`).join('')}
-        </div>
-      </div>`;
-      if (!matchState[`${sec.id}-${i}`]) matchState[`${sec.id}-${i}`] = {term:null,def:null,pairs:ex.pairs};
-    }
-
-    exHtml += `<div class="ex-footer">
-      <span class="pts">${ex.pts} Punkte</span>
-      <button class="show-ans-btn" onclick="toggleAnswer(${sec.id},${i})">Musterlösung zeigen</button>
-    </div>
-    <div class="answer-reveal" id="ans-${sec.id}-${i}">${ex.answer}</div>
-    </div>`;
-  });
-
-  const st = STATUS[sec.id];
-  const html = `
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;cursor:pointer" onclick="showSection('overview')">
-    <span style="font-size:18px;color:#888">‹</span>
-    <span style="font-size:14px;color:#888">Zurück zur Übersicht</span>
-  </div>
-  <div class="topic-card">
-    <div class="topic-header" onclick="toggleCard(${sec.id})">
-      <div>
-        <h2>${sec.title}</h2>
-        <p style="font-size:13px;color:#888;margin-top:3px">${sec.desc}</p>
-        <p style="font-size:12px;color:#aaa;margin-top:2px">📚 ${sec.ref}</p>
-      </div>
-      <div class="topic-status">
-        <span class="badge ${st||'offen'}">${st==='sicher'?'Sicher ✓':st==='unsicher'?'Unsicher ⚠':'Noch offen'}</span>
-        <span class="chevron" id="chev-${sec.id}">▼</span>
-      </div>
-    </div>
-    <div class="topic-body open" id="body-${sec.id}">
-      <div class="self-assess">
-        <p>Wie sicher fühlst du dich bei diesem Thema?</p>
-        <div class="assess-btns">
-          <button class="assess-btn ${st==='sicher'?'selected-sicher':''}" onclick="setStatus(${sec.id},'sicher')">✅ Sicher – ich kann das erklären</button>
-          <button class="assess-btn ${st==='unsicher'?'selected-unsicher':''}" onclick="setStatus(${sec.id},'unsicher')">⚠️ Unsicher – ich muss üben</button>
-        </div>
-      </div>
-      <div class="exercises">
-        <div class="ex-title">Übungsaufgaben</div>
-        ${exHtml}
-      </div>
-      ${st==='unsicher'?`<div class="feedback"><div class="feedback-hint visible">
-        <strong>Tipp für unsichere Themen:</strong> Schau dir den Quellverweis oben an, lese den entsprechenden Abschnitt im Schulbuch nochmal durch und versuche dann die Aufgaben erneut. Zeige die Musterlösung erst, wenn du deine eigene Antwort geschrieben hast!
-      </div></div>`:''}
-    </div>
-  </div>`;
-
-  document.getElementById('mainContent').innerHTML = html;
-}
-
-function toggleCard(id) {
-  const body = document.getElementById('body-'+id);
-  const chev = document.getElementById('chev-'+id);
-  body.classList.toggle('open');
-  chev.textContent = body.classList.contains('open') ? '▼' : '›';
-}
-
-function setStatus(id, st) {
-  STATUS[id] = st;
-  updateProgress();
-  document.querySelectorAll('.assess-btn').forEach(b => {
-    b.classList.remove('selected-sicher','selected-unsicher');
-  });
-  event.target.classList.add('selected-'+st);
-  // Update nav badge
-  const navBtn = document.getElementById('nav-'+id);
-  if (navBtn) {
-    navBtn.className = 'nav-btn active ' + (st==='sicher'?'done':'warn');
-  }
-  // Show/hide hint
-  const hint = document.querySelector('.feedback-hint');
-  if (hint) hint.className = st==='unsicher' ? 'feedback-hint visible' : 'feedback-hint';
-  renderSection(SECTIONS[id]);
-}
-
-function updateProgress() {
-  const done = Object.keys(STATUS).filter(k => STATUS[k]==='sicher').length;
-  const total = SECTIONS.length;
-  const pct = Math.round(done/total*100);
-  document.getElementById('progBar').style.width = pct+'%';
-  document.getElementById('progLabel').textContent = `${done} von ${total} Lernzielen als "Sicher" markiert`;
-  // Update all nav btns
-  SECTIONS.forEach(s => {
-    const nb = document.getElementById('nav-'+s.id);
-    if (!nb) return;
-    const wasActive = nb.classList.contains('active');
-    nb.className = 'nav-btn' + (wasActive?' active':'');
-    if (STATUS[s.id]==='sicher') nb.classList.add('done');
-    else if (STATUS[s.id]==='unsicher') nb.classList.add('warn');
-  });
-}
-
-function toggleAnswer(sid, eid) {
-  const el = document.getElementById(`ans-${sid}-${eid}`);
-  el.classList.toggle('visible');
-  const btn = el.previousElementSibling.querySelector('.show-ans-btn');
-  if (btn) btn.textContent = el.classList.contains('visible') ? 'Musterlösung ausblenden' : 'Musterlösung zeigen';
-}
-
-function checkMC(sid, eid, oi, correct) {
-  const opts = document.querySelectorAll(`[id^="mcopt-${sid}-${eid}-"]`);
-  opts.forEach(o => {
-    o.style.pointerEvents = 'none';
-    const idx = parseInt(o.id.split('-').pop());
-    if (idx === oi) o.classList.add(correct ? 'correct' : 'wrong');
-  });
-  if (correct) {
-    const ans = document.getElementById(`ans-${sid}-${eid}`);
-    ans.classList.add('visible');
-  }
-}
-
-function selectMatchTerm(sid, eid, ti, term) {
-  const key = `${sid}-${eid}`;
-  const state = matchState[key];
-  if (!state) return;
-  // Clear previous term selection
-  document.querySelectorAll(`[id^="mt-${sid}-${eid}-"]`).forEach(el => {
-    if (!el.classList.contains('matched')) el.classList.remove('selected');
-  });
-  state.term = {idx:ti, val:term};
-  document.getElementById(`mt-${sid}-${eid}-${ti}`).classList.add('selected');
-  checkMatch(sid, eid);
-}
-
-function selectMatchDef(sid, eid, di, def) {
-  const key = `${sid}-${eid}`;
-  const state = matchState[key];
-  if (!state) return;
-  document.querySelectorAll(`[id^="md-${sid}-${eid}-"]`).forEach(el => {
-    if (!el.classList.contains('matched')) el.classList.remove('selected');
-  });
-  state.def = {idx:di, val:def};
-  document.getElementById(`md-${sid}-${eid}-${di}`).classList.add('selected');
-  checkMatch(sid, eid);
-}
-
-function checkMatch(sid, eid) {
-  const key = `${sid}-${eid}`;
-  const state = matchState[key];
-  if (!state || !state.term || !state.def) return;
-  const correctDef = state.pairs.find(p => p[0] === state.term.val)?.[1];
-  const isCorrect = correctDef === state.def.val;
-  const termEl = document.getElementById(`mt-${sid}-${eid}-${state.term.idx}`);
-  const defEl  = document.getElementById(`md-${sid}-${eid}-${state.def.idx}`);
-  if (isCorrect) {
-    termEl.classList.add('matched'); termEl.classList.remove('selected');
-    defEl.classList.add('matched');  defEl.classList.remove('selected');
-  } else {
-    termEl.classList.add('wrong-match'); defEl.classList.add('wrong-match');
-    setTimeout(() => {
-      termEl.classList.remove('wrong-match','selected');
-      defEl.classList.remove('wrong-match','selected');
-    }, 800);
-  }
-  state.term = null; state.def = null;
-}
-
-// Init
 renderOverview();
 </script>
 </body>
