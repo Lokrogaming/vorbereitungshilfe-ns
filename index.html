@@ -1,1 +1,1031 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fit für den Test – Geschichte Klasse 9a</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Caveat:wght@400;600;700&display=swap');
 
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',Arial,sans-serif;background:#fdf9f0;color:#2d2d2d;min-height:100vh}
+
+/* ── HEADER ── */
+.hdr{background:#fff;border-bottom:3px solid #f0e0c0;padding:14px 18px 10px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.hdr-title{font-family:'Caveat',cursive;font-size:26px;font-weight:700;color:#2d2d2d;line-height:1}
+.hdr-title span{color:#e74c3c;text-decoration:underline;text-decoration-color:#e74c3c;text-underline-offset:3px}
+.hdr-meta{display:flex;gap:8px;flex-wrap:wrap}
+.hdr-chip{background:#f8f0e0;border:1.5px solid #e8d5a0;border-radius:10px;padding:4px 10px;font-size:12px;color:#5d4037;font-weight:600}
+.pb-wrap{margin-top:10px;background:#f0e8d0;border-radius:20px;height:12px;overflow:hidden;border:1.5px solid #e0d0a0}
+.pb{height:12px;border-radius:20px;background:linear-gradient(90deg,#27ae60,#2ecc71);transition:width .6s;position:relative}
+.pb::after{content:'';position:absolute;top:2px;left:6px;right:6px;height:3px;background:rgba(255,255,255,.4);border-radius:3px}
+.pb-lbl{font-size:11px;color:#888;margin-top:3px;text-align:right;font-weight:600}
+
+/* ── NAV ── */
+.nav{display:flex;gap:6px;padding:10px 14px;background:#fff;border-bottom:2px solid #f0e0c0;overflow-x:auto;flex-wrap:nowrap}
+.nb{padding:6px 13px;border:2px solid #e0d0a0;border-radius:20px;background:#fdf9f0;font-size:12px;cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0;font-family:'Nunito',sans-serif;font-weight:600}
+.nb:hover{background:#fdf0d8}
+.nb.active{background:#2d2d2d;color:#fff;border-color:#2d2d2d}
+.nb.done{border-color:#27ae60;color:#1A5E36;background:#f0faf4}
+.nb.warn{border-color:#e67e22;color:#c0392b;background:#fff8f0}
+
+/* ── MAIN ── */
+.main{padding:14px;max-width:680px;margin:0 auto}
+
+/* ── OVERVIEW HEADER (Fit für den Test) ── */
+.ov-hero{text-align:center;padding:20px 10px 14px;position:relative}
+.ov-hero h1{font-family:'Caveat',cursive;font-size:44px;font-weight:700;color:#2d2d2d;line-height:1.1}
+.ov-hero h1 span{color:#e74c3c}
+.ov-hero p{font-size:14px;color:#666;margin-top:4px}
+.meta-chips{display:flex;justify-content:center;gap:8px;margin:12px 0;flex-wrap:wrap}
+.meta-chip{display:flex;align-items:center;gap:5px;background:#fff;border:2px solid #e8d5a0;border-radius:12px;padding:6px 12px;font-size:13px;font-weight:700;color:#5d4037}
+.meta-chip .mc-icon{font-size:18px}
+.thema-box{background:#fff;border:2.5px solid #e8d5a0;border-radius:14px;padding:12px 16px;margin:10px 0;text-align:left}
+.thema-lbl{display:inline-block;background:#e74c3c;color:#fff;border-radius:8px;padding:3px 10px;font-size:13px;font-weight:700;margin-right:8px}
+.thema-text{font-size:14px;font-weight:700;color:#2d2d2d;display:inline}
+.thema-sub{font-size:13px;color:#666;margin-top:4px}
+.thema-sub u{color:#2d2d2d;font-weight:600}
+
+/* ── SECTION CARDS ── */
+.sec-card{border-radius:16px;border:2.5px solid;margin-bottom:14px;overflow:hidden;transition:box-shadow .2s}
+.sec-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.sec-card-hdr{padding:14px 16px;display:flex;align-items:flex-start;gap:12px;cursor:pointer}
+.sec-icon-wrap{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;border:2.5px solid rgba(0,0,0,.08)}
+.sec-title-wrap{flex:1}
+.sec-title{font-family:'Caveat',cursive;font-size:22px;font-weight:700;line-height:1.1}
+.sec-sub{font-size:12px;color:#666;margin-top:2px;font-weight:600}
+.sec-status{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.status-badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;white-space:nowrap}
+.sb-s{background:#d4edda;color:#155724}
+.sb-u{background:#fff3cd;color:#856404}
+.sb-o{background:#f0f0f0;color:#666}
+
+/* CHECKLIST */
+.sec-check{padding:8px 16px 10px 72px;font-size:13px;color:#444;display:flex;align-items:flex-start;gap:8px;font-weight:600}
+.chk-box{width:18px;height:18px;border:2.5px solid #aaa;border-radius:4px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;cursor:pointer;transition:all .15s}
+.chk-box.checked{background:#27ae60;border-color:#27ae60;color:#fff}
+
+/* HILFEN NOTE */
+.hilfen-wrap{padding:0 16px 12px 72px;display:flex;gap:10px;flex-wrap:wrap}
+.hilfen-note{background:#fffde7;border:2px solid #f9ca24;border-radius:10px;padding:7px 10px;font-size:11px;line-height:1.7;min-width:120px;position:relative}
+.hilfen-note::before{content:'📌 HILFEN:';display:block;font-size:10px;font-weight:800;color:#f0a500;margin-bottom:3px;letter-spacing:.05em}
+.hilfen-note a{color:#1a73e8;text-decoration:none;font-weight:700}
+.hilfen-note a:hover{text-decoration:underline}
+
+/* BODY (exercises) */
+.sec-body{border-top:2px dashed rgba(0,0,0,.1);display:none}
+.sec-body.open{display:block}
+
+/* EXERCISES */
+.exwrap{padding:12px 16px}
+.ex-section-lbl{font-size:10px;font-weight:800;color:#aaa;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.ex{border-radius:10px;padding:12px;margin-bottom:10px;border-left:4px solid #ccc;background:#f8f9fa}
+.ex.a1{border-left-color:#3498db;background:#f0f7ff}
+.ex.a2{border-left-color:#8e44ad;background:#f8f0ff}
+.ex.a3{border-left-color:#e67e22;background:#fff8f0}
+.ex.gap{border-left-color:#16a085;background:#f0faf8}
+.ex.drag{border-left-color:#c0392b;background:#fff8f8}
+.ex.match{border-left-color:#8e44ad;background:#f8f0ff}
+.afb-tag{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.a1 .afb-tag,.match .afb-tag{color:#2471a3}
+.a2 .afb-tag{color:#7d3c98}
+.a3 .afb-tag{color:#d35400}
+.gap .afb-tag{color:#0e8a70}
+.drag .afb-tag{color:#a93226}
+.qtext{font-size:13px;font-weight:700;margin-bottom:8px;line-height:1.5}
+.srcbox{background:#fff;border:1.5px solid #ddd;border-radius:6px;padding:8px 10px;margin-bottom:8px;font-size:12px;font-style:italic;color:#555;line-height:1.6}
+
+/* MC */
+.mc-opts{display:flex;flex-direction:column;gap:5px;margin-bottom:6px}
+.mco{display:flex;align-items:flex-start;gap:7px;background:#fff;border:2px solid #ddd;border-radius:8px;padding:7px 10px;cursor:pointer;font-size:13px;font-weight:600;transition:all .12s;line-height:1.4}
+.mco:hover:not(.lk){border-color:#3498db;background:#f0f7ff}
+.mco.ok{border-color:#27ae60;background:#d4edda;pointer-events:none}
+.mco.no{border-color:#c0392b;background:#fde8e8;pointer-events:none}
+.mco.lk{pointer-events:none}
+.ci{width:18px;height:18px;border-radius:50%;border:2px solid #ccc;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.mco.ok .ci{background:#27ae60;border-color:#27ae60;color:#fff}
+.mco.no .ci{background:#c0392b;border-color:#c0392b;color:#fff}
+
+/* GAP */
+.gap-text{font-size:14px;line-height:2.4;background:#fff;border-radius:8px;padding:12px;margin-bottom:8px;border:2px solid #ddd;font-weight:600}
+.gap-input{border:none;border-bottom:2.5px solid #16a085;background:transparent;font-size:14px;font-family:'Nunito',sans-serif;font-weight:700;width:170px;color:#0e7a65;outline:none;padding:0 2px}
+.gap-input.gg{border-bottom-color:#27ae60;color:#155724}
+.gap-input.gw{border-bottom-color:#c0392b;color:#922b21}
+.gap-input.gh{border-bottom-color:#e67e22;color:#a04000}
+.gap-hint{font-size:11px;color:#e67e22;margin-left:4px;display:none;font-style:italic;font-weight:600}
+.check-gap-btn{background:#16a085;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:700;font-family:'Nunito',sans-serif}
+.check-gap-btn:hover{background:#0e7a65}
+.gap-feedback{font-size:12px;margin-top:6px;padding:7px 10px;border-radius:8px;display:none;font-weight:600}
+.gap-feedback.vis{display:block}
+.gap-feedback.gfok{background:#d4edda;color:#155724}
+.gap-feedback.gfno{background:#fde8e8;color:#922b21}
+
+/* OPEN */
+.ta{width:100%;min-height:70px;border:2px solid #ddd;border-radius:8px;padding:8px 10px;font-family:'Nunito',sans-serif;font-size:13px;resize:vertical;line-height:1.5;font-weight:600}
+.ta:focus{outline:none;border-color:#3498db}
+.show-btn{margin-top:7px;background:#2d2d2d;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700;display:inline-flex;align-items:center;gap:5px}
+.show-btn:hover{background:#444}
+.show-btn.shown{background:#555}
+.muster{background:#d4edda;border-left:4px solid #27ae60;border-radius:0 8px 8px 0;padding:10px 12px;margin-top:7px;font-size:13px;color:#155724;line-height:1.6;display:none;font-weight:600}
+.muster.vis{display:block}
+.selfcheck{margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,100,50,.2);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.selfcheck p{font-size:12px;color:#155724;font-weight:700}
+.sc-btn{padding:5px 12px;border-radius:12px;border:2px solid #ddd;background:#fff;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700}
+.sc-btn.yes{background:#27ae60;color:#fff;border-color:#27ae60}
+.sc-btn.no{background:#e67e22;color:#fff;border-color:#e67e22}
+
+/* TIMELINE */
+.tl-pool{display:flex;flex-wrap:wrap;gap:6px;padding:8px;background:#fff;border:2.5px dashed #c0392b;border-radius:10px;min-height:44px;margin-bottom:10px}
+.tl-chip{background:#c0392b;color:#fff;border-radius:8px;padding:6px 10px;font-size:12px;cursor:grab;user-select:none;touch-action:none;font-weight:700}
+.tl-chip.placed{opacity:.3;pointer-events:none}
+.tl-slots{display:flex;flex-direction:column;gap:6px}
+.tl-slot{display:flex;align-items:stretch;border:2px dashed #ddd;border-radius:8px;min-height:44px;overflow:hidden;transition:all .15s}
+.tl-slot.dov{border-color:#c0392b;background:#fff8f8}
+.tl-slot.cor{border-color:#27ae60;background:#d4edda}
+.tl-slot.wro{border-color:#c0392b;background:#fde8e8}
+.slot-nr{width:30px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#888;flex-shrink:0}
+.slot-drop{flex:1;padding:6px 10px;display:flex;align-items:center;font-size:12px;color:#aaa;font-style:italic;font-weight:600}
+.slot-drop.has{color:#2d2d2d;font-style:normal}
+.tl-check-btn{background:#c0392b;color:#fff;border:none;border-radius:8px;padding:7px 16px;font-size:12px;cursor:pointer;font-weight:700;font-family:'Nunito',sans-serif;margin-top:4px}
+.tl-result{font-size:12px;margin-top:6px;padding:8px 10px;border-radius:8px;display:none;font-weight:600}
+.tl-result.vis{display:block;background:#d4edda;color:#155724}
+
+/* MATCH */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+.match-col-lbl{font-size:10px;font-weight:800;color:#888;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+.mi{padding:7px 9px;border-radius:8px;font-size:12px;cursor:pointer;border:2px solid #ddd;background:#fff;transition:all .12s;text-align:center;line-height:1.4;font-weight:600}
+.mi:hover:not(.md):not(.mw){border-color:#8e44ad;background:#f8f0ff}
+.mi.ms{border-color:#8e44ad;background:#f3e5f5}
+.mi.md{border-color:#27ae60;background:#d4edda;cursor:default;font-weight:700}
+.mi.mw{border-color:#c0392b;background:#fde8e8}
+
+/* FINISH AREA */
+.finish-area{padding:14px 16px;border-top:2px dashed rgba(0,0,0,.1);background:rgba(255,255,255,.6)}
+.finish-area h3{font-family:'Caveat',cursive;font-size:20px;font-weight:700;margin-bottom:10px;color:#2d2d2d}
+.mini-pb-wrap{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.mini-pb-bar{flex:1;background:#e8e0d0;border-radius:20px;height:10px;overflow:hidden;border:1.5px solid #d8d0b8}
+.mini-pb-fill{height:10px;border-radius:20px;background:linear-gradient(90deg,#27ae60,#2ecc71);transition:width .5s}
+.mini-pb-lbl{font-size:11px;color:#888;white-space:nowrap;font-weight:700}
+.finish-btns{display:flex;gap:8px;flex-wrap:wrap}
+.fin-btn{flex:1;padding:11px 14px;border-radius:12px;border:2.5px solid;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;transition:all .15s}
+.fin-btn.s{background:#fff;border-color:#27ae60;color:#155724}
+.fin-btn.s:hover,.fin-btn.s.sel{background:#d4edda;border-color:#1a8a4a}
+.fin-btn.u{background:#fff;border-color:#e67e22;color:#7f3b00}
+.fin-btn.u:hover,.fin-btn.u.sel{background:#fff3cd;border-color:#c0602a}
+.finish-result{margin-top:10px;display:none}
+.finish-result.vis{display:block}
+.fin-res-box{border-radius:12px;padding:12px 14px;font-size:13px;font-weight:700;line-height:1.6;margin-bottom:8px}
+.fin-res-box.g{background:#d4edda;border:2px solid #27ae60;color:#155724}
+.fin-res-box.o{background:#fff3cd;border:2px solid #e67e22;color:#7f3b00}
+.fin-nav{display:flex;gap:8px;flex-wrap:wrap}
+.fin-next{flex:1;padding:11px 14px;background:#2d2d2d;color:#fff;border:none;border-radius:12px;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800}
+.fin-next:hover{background:#444}
+.fin-ov{padding:11px 14px;background:#fdf9f0;color:#555;border:2px solid #ddd;border-radius:12px;font-size:13px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700}
+
+/* OVERVIEW SECTION LIST */
+.ov-sec-card{border-radius:16px;border:2.5px solid;margin-bottom:10px;cursor:pointer;transition:all .15s;overflow:hidden}
+.ov-sec-card:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.ov-sec-inner{padding:12px 16px;display:flex;align-items:center;gap:10px}
+.ov-sec-icon{font-size:24px;width:38px;text-align:center;flex-shrink:0}
+.ov-sec-info{flex:1}
+.ov-sec-title{font-family:'Caveat',cursive;font-size:20px;font-weight:700;line-height:1.1}
+.ov-sec-desc{font-size:11px;color:#666;margin-top:2px;font-weight:600}
+.ov-checks{display:flex;align-items:center;gap:6px;padding:0 16px 10px 64px;flex-wrap:wrap}
+.ov-check{display:flex;align-items:center;gap:5px;font-size:12px;color:#555;font-weight:600}
+.ov-cb{width:16px;height:16px;border:2px solid #aaa;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px}
+.ov-cb.done{background:#27ae60;border-color:#27ae60;color:#fff}
+
+/* HINT BOX */
+.hint-box{background:#fff8e1;border-left:4px solid #f39c12;border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;color:#5d4037;margin:8px 0;font-weight:600}
+
+/* EVAL */
+.eval-hero{text-align:center;padding:20px;border-radius:16px;margin-bottom:14px}
+.eval-hero.gr{background:linear-gradient(135deg,#d4edda,#a8e6bc)}
+.eval-hero.go{background:linear-gradient(135deg,#fff3cd,#ffe082)}
+.eval-hero.gw{background:linear-gradient(135deg,#fde8e8,#f5b7b1)}
+.eval-score{font-family:'Caveat',cursive;font-size:56px;font-weight:700;line-height:1}
+.eval-msg{font-size:17px;font-weight:800;color:#2d2d2d;margin-top:4px}
+.eval-sub{font-size:13px;color:#666;margin-top:3px;font-weight:600}
+.eval-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.ev-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#fff;border-radius:10px;border:2px solid #e8e8e8}
+.ev-ico{font-size:20px;width:26px;text-align:center;flex-shrink:0}
+.ev-info{flex:1}
+.ev-title{font-size:13px;font-weight:700}
+.ev-sub{font-size:11px;color:#888;margin-top:1px;font-weight:600}
+.ev-badge{font-size:11px;padding:3px 8px;border-radius:8px;font-weight:800;flex-shrink:0}
+.ev-badge.g{background:#d4edda;color:#155724}
+.ev-badge.o{background:#fff3cd;color:#856404}
+.ev-badge.r{background:#fde8e8;color:#922b21}
+.reco-box{background:#e3f2fd;border-left:4px solid #1565c0;border-radius:0 10px 10px 0;padding:12px 14px;margin-top:12px;font-size:13px;color:#0d3060;line-height:1.8;font-weight:600}
+.reco-box strong{display:block;margin-bottom:5px;font-size:14px;font-weight:800}
+.eval-finish{display:block;width:100%;margin-top:12px;padding:12px;background:#2d2d2d;color:#fff;border:none;border-radius:12px;font-size:14px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;text-align:center}
+.eval-btn-big{display:block;width:100%;margin-top:12px;padding:12px;background:#27ae60;color:#fff;border:none;border-radius:12px;font-size:15px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:800;text-align:center}
+.back-btn{display:flex;align-items:center;gap:5px;font-size:13px;color:#888;cursor:pointer;margin-bottom:10px;background:none;border:none;padding:0;font-family:'Nunito',sans-serif;font-weight:700}
+.back-btn:hover{color:#333}
+
+/* Emoji motivator at bottom */
+.motivator{text-align:center;font-family:'Caveat',cursive;font-size:20px;color:#888;padding:16px 0 8px;letter-spacing:.05em}
+
+/* GHOST */
+.tghost{position:fixed;pointer-events:none;z-index:1000;opacity:.9;transform:rotate(3deg);background:#c0392b;color:#fff;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-top">
+    <div class="hdr-title">💡 <span>Fit</span> für den Test</div>
+    <div class="hdr-meta">
+      <span class="hdr-chip">📚 Geschichte</span>
+      <span class="hdr-chip">👥 Klasse 9a</span>
+      <span class="hdr-chip">🎯 Test Nr. 2</span>
+    </div>
+  </div>
+  <div class="pb-wrap"><div class="pb" id="pb" style="width:0%"></div></div>
+  <div class="pb-lbl" id="pbl">0 von 8 Lernzielen abgeschlossen</div>
+</div>
+
+<div class="nav" id="nav">
+  <button class="nb active" onclick="go('ov')">📋 Übersicht</button>
+  <button class="nb" id="n0" onclick="go(0)">1. Begriffe</button>
+  <button class="nb" id="n1" onclick="go(1)">2. Quellen</button>
+  <button class="nb" id="n2" onclick="go(2)">3. Diktatur</button>
+  <button class="nb" id="n3" onclick="go(3)">4. Ideologie</button>
+  <button class="nb" id="n4" onclick="go(4)">5. Reichstagsbrand</button>
+  <button class="nb" id="n5" onclick="go(5)">6. Ermächtigung</button>
+  <button class="nb" id="n6" onclick="go(6)">7. Wirtschaft</button>
+  <button class="nb" id="n7" onclick="go(7)">8. Unterstützung</button>
+</div>
+
+<div class="main" id="mc"></div>
+
+<script>
+// ─── THEME COLORS per section ─────────────────
+const THEMES=[
+  {bg:'#fffde7',border:'#f9ca24',iconBg:'#f9ca24',icon:'💡',color:'#5d4007'},
+  {bg:'#e8f5e9',border:'#4caf50',iconBg:'#4caf50',icon:'🔍',color:'#1a5e24'},
+  {bg:'#e3f2fd',border:'#2196f3',iconBg:'#2196f3',icon:'🏛️',color:'#0d47a1'},
+  {bg:'#f3e5f5',border:'#9c27b0',iconBg:'#9c27b0',icon:'🧠',color:'#4a148c'},
+  {bg:'#fce4ec',border:'#e91e63',iconBg:'#e91e63',icon:'🔥',color:'#880e4f'},
+  {bg:'#e8eaf6',border:'#3f51b5',iconBg:'#3f51b5',icon:'§',color:'#1a237e'},
+  {bg:'#fff3e0',border:'#ff9800',iconBg:'#ff9800',icon:'📈',color:'#e65100'},
+  {bg:'#fce4ec',border:'#f48fb1',iconBg:'#ec407a',icon:'👥',color:'#880e4f'},
+];
+
+// ─── STATE ────────────────────────────────────
+const ST={};
+const matchSt={};
+const TL_DATA={};
+let dragItem=null, tghost=null;
+const gapAttempts={};
+
+// ─── MC POOLS ─────────────────────────────────
+const MCP={
+  begriffe:[
+    {q:"Was versteht man unter 'Gleichschaltung'?",opts:[
+      {t:"Einführung gleicher Löhne",c:false},
+      {t:"Unterordnung aller gesellschaftlichen Bereiche unter die NSDAP",c:true},
+      {t:"Gleichstellung von Frauen",c:false},
+      {t:"Vereinheitlichung des Schulsystems",c:false}]},
+    {q:"Was besagt das Führerprinzip?",opts:[
+      {t:"Alle entscheiden demokratisch per Mehrheit",c:false},
+      {t:"Der Führer hat uneingeschränkte Macht und bedingungslosen Gehorsam",c:true},
+      {t:"Jeder kann durch Wahl Führer werden",c:false},
+      {t:"Der Führer legt dem Parlament Rechenschaft ab",c:false}]},
+    {q:"Was verstand Hitler unter 'Lebensraum'?",opts:[
+      {t:"Mehr Wohnraum in deutschen Städten",c:false},
+      {t:"Neue Gebiete in Westeuropa",c:false},
+      {t:"Neues Land für das deutsche Volk – vor allem in Osteuropa",c:true},
+      {t:"Naturschutzgebiete im Deutschen Reich",c:false}]},
+  ],
+  ideologie:[
+    {q:"Welche Aussage entspricht NICHT der NS-Ideologie?",opts:[
+      {t:"Die Deutschen sind eine überlegene Rasse",c:false},
+      {t:"Deutschland braucht Lebensraum im Osten",c:false},
+      {t:"Alle Menschen sind gleichwertig und haben gleiche Rechte",c:true},
+      {t:"Der Führer hat uneingeschränkte Macht",c:false}]},
+    {q:"Welche vier Grundelemente hatte die NS-Ideologie?",opts:[
+      {t:"Demokratie, Pressefreiheit, Sozialismus, Pazifismus",c:false},
+      {t:"Rassismus, Lebensraum, Führerprinzip, Gewalt/Antibolschewismus",c:true},
+      {t:"Kapitalismus, Nationalismus, Frieden, Gleichheit",c:false},
+      {t:"Religion, Tradition, Familie, Arbeit",c:false}]},
+    {q:"Was bezeichneten die Nationalsozialisten mit 'Arier'?",opts:[
+      {t:"Alle Einwohner Deutschlands",c:false},
+      {t:"Eine angeblich überlegene nordische Rasse – eine rassistische Erfindung",c:true},
+      {t:"Nur NSDAP-Mitglieder",c:false},
+      {t:"Alle Europäer",c:false}]},
+  ],
+  wirtschaft:[
+    {q:"Was waren die Mefo-Wechsel?",opts:[
+      {t:"Goldmünzen aus der NS-Zeit",c:false},
+      {t:"Geheime Schuldversprechen zur Bezahlung von Rüstungsunternehmen",c:true},
+      {t:"Sonderkredite für Arbeitslose",c:false},
+      {t:"Wechselkurse zwischen Reichsmark und Dollar",c:false}]},
+    {q:"Wie viele Millionen waren 1932 arbeitslos?",opts:[
+      {t:"ca. 1 Million",c:false},
+      {t:"ca. 3 Millionen",c:false},
+      {t:"ca. 6 Millionen",c:true},
+      {t:"ca. 10 Millionen",c:false}]},
+    {q:"Wofür wurden die meisten Staatsausgaben nach 1933 verwendet?",opts:[
+      {t:"Schulen und Universitäten",c:false},
+      {t:"Rüstung und Militär",c:true},
+      {t:"Sozialleistungen und Renten",c:false},
+      {t:"Landwirtschaft",c:false}]},
+  ],
+  diktatur:[
+    {q:"Wann wurde Hitler zum Reichskanzler ernannt?",opts:[
+      {t:"30. Januar 1933",c:true},
+      {t:"28. Februar 1933",c:false},
+      {t:"23. März 1933",c:false},
+      {t:"2. August 1934",c:false}]},
+    {q:"Was ermöglichte das Ermächtigungsgesetz?",opts:[
+      {t:"Hitler konnte Deutschland verlassen",c:false},
+      {t:"Hitler konnte ohne Reichstag Gesetze erlassen",c:true},
+      {t:"Alle Deutschen mussten in die NSDAP eintreten",c:false},
+      {t:"Der Reichspräsident wurde abgeschafft",c:false}]},
+    {q:"Was geschah am 2. August 1934?",opts:[
+      {t:"Der Reichstag brannte",c:false},
+      {t:"Das Ermächtigungsgesetz trat in Kraft",c:false},
+      {t:"Hitler vereinte Reichskanzler + Reichspräsident – wurde 'Führer'",c:true},
+      {t:"Die NSDAP wurde gegründet",c:false}]},
+  ],
+};
+
+function pickMC(pool){ return [...pool].sort(()=>Math.random()-.5)[0]; }
+function shOpts(opts){ return [...opts].sort(()=>Math.random()-.5); }
+
+// ─── SECTIONS ─────────────────────────────────
+const SECS=[
+  { id:0,
+    title:"1. Grundwissen & Begriffe",
+    checks:["Ich kann die Begriffe Gleichschaltung, Antisemitismus, Führerprinzip, Lebensraum und Ideologie erklären."],
+    hilfen:["AB Baustein 3","SB S. 137","SB S. 138","SB S. 136"],
+    recoPage:"AB Baustein 3 | SB S. 136–138",
+    exercises:[
+      {type:"mc",pool:"begriffe",afb:1,pts:3},
+      {type:"gap",afb:1,pts:5,
+        label:"Lückentext – Begriffe",
+        template:"Die NS-Ideologie basierte auf mehreren Grundelementen. Der __1__ beschreibt den Hass auf Juden. Das __2__ bedeutete, dass Hitler uneingeschränkte Macht besaß. Unter __3__ verstanden die Nazis die Forderung nach neuem Land in __4__. Die Unterordnung aller Bereiche unter die NSDAP nennt man __5__.",
+        blanks:["Antisemitismus","Führerprinzip","Lebensraum","Osteuropa","Gleichschaltung"],
+        slots:["1","2","3","4","5"]},
+      {type:"open",afb:2,pts:4,
+        q:"Erkläre in 2–3 Sätzen: Was verstand Hitler unter dem Begriff 'Lebensraum'?",
+        model:"Hitler verstand unter 'Lebensraum' die Forderung nach neuem Land für das deutsche Volk – vor allem in Osteuropa (Russland, Ukraine). Er behauptete, Deutschland brauche mehr Platz für seine Bevölkerung. Die gewaltsame Eroberung wurde mit der angeblichen Überlegenheit der deutschen Rasse gerechtfertigt."},
+    ]
+  },
+  { id:1,
+    title:"2. Quellen & Analysen",
+    checks:["Ich kann eine schriftliche Quelle analysieren."],
+    hilfen:["AB Baustein 1–3","SB S. 89"],
+    recoPage:"AB Baustein 1–3 | SB S. 89",
+    exercises:[
+      {type:"gap",afb:1,pts:4,
+        label:"Lückentext – Quellenanalyse",
+        template:"Eine Quelle analysieren bedeutet: zuerst die __1__ vorstellen (Wer? Wann? Welche Art?). Dann den __2__ der Quelle zusammenfassen. Schließlich den __3__ des Autors herausarbeiten.",
+        blanks:["Quelle","Inhalt","Standpunkt"],
+        slots:["1","2","3"]},
+      {type:"open",afb:1,pts:4,
+        source:'"In erschreckenden Massen wird die Währung von der schrankenlos betriebenen Ausgabewirtschaft bedroht [...] Keine Notenbank ist imstande, die Ausgabenwirtschaft eines Staates aufrechtzuerhalten gegen eine inflationistische Ausgabepolitik." — Hjalmar Schacht, Brief, 7. Januar 1939',
+        q:"Stelle diese Quelle strukturiert vor: Wer? Was für eine Quelle? Wann? An wen?",
+        model:"Verfasser: Hjalmar Schacht, Präsident der Deutschen Reichsbank. Quellenart: Interner Brief (Primärquelle). Entstehungszeit: 7. Januar 1939. Adressat: Die Direktoren der Deutschen Reichsbank."},
+      {type:"open",afb:2,pts:5,
+        source:"(Quelle: Schacht-Brief – siehe oben)",
+        q:"Erkläre in eigenen Worten, was Schacht kritisiert. Was befürchtet er?",
+        model:"Schacht kritisiert die maßlosen Staatsausgaben der NS-Regierung. Er befürchtet, dass diese Ausgaben (vor allem für Rüstung) die Währung zerstören und den Staat in den Bankrott treiben. Keine Notenbank könne eine solche Ausgabenpolitik dauerhaft tragen."},
+    ]
+  },
+  { id:2,
+    title:"3. Weg zur NS-Diktatur",
+    checks:["Ich kann die wichtigsten Stationen auf dem Weg zur NS-Diktatur erklären."],
+    hilfen:["TB Stufenmodell",{text:"Chronik Ermächtigungsgesetz",link:"https://stephmeu.github.io/Machtergreifung/",linkText:"stephmeu.github.io/Machtergreifung"}],
+    recoPage:"Tafelbild Stufenmodell | Artefakt Machtergreifung",
+    exercises:[
+      {type:"mc",pool:"diktatur",afb:1,pts:3},
+      {type:"timeline",afb:1,pts:6,
+        label:"Zeitstrahl – Ziehe die Ereignisse in die richtige Reihenfolge",
+        items:[
+          {id:"a",t:"Hitler wird Reichskanzler",date:"30. Jan. 1933",order:1},
+          {id:"b",t:"Reichstagsbrand",date:"27./28. Feb. 1933",order:2},
+          {id:"c",t:"Reichstagsbrandverordnung",date:"28. Feb. 1933",order:3},
+          {id:"d",t:"Ermächtigungsgesetz",date:"23. März 1933",order:4},
+          {id:"e",t:"Gleichschaltung abgeschlossen",date:"Juli 1933",order:5},
+          {id:"f",t:"Hitler = Führer und Reichskanzler",date:"2. Aug. 1934",order:6},
+        ]},
+      {type:"open",afb:3,pts:5,
+        q:"Beurteile: War das Ermächtigungsgesetz legal – oder der Beginn der Diktatur? Nenne Argumente für beide Seiten.",
+        model:"Für Legalität: Das Gesetz wurde mit Zweidrittelmehrheit beschlossen (Art. 76 WRV). / Gegen Legalität: KPD-Abgeordnete waren verhaftet, SA bedrohte das Parlament – die Abstimmung war nicht frei. Die Befristung bis 1937 wurde nie eingehalten. Fazit: Nur scheinbar legal."},
+    ]
+  },
+  { id:3,
+    title:"4. Ideologie & Grundvorstellungen",
+    checks:["Ich kann erklären, welche Grundvorstellungen die Ideologie der Nationalsozialisten prägte."],
+    hilfen:["SB S. 136–138"],
+    recoPage:"SB S. 136–138 + AB Baustein 3",
+    exercises:[
+      {type:"mc",pool:"ideologie",afb:1,pts:3},
+      {type:"match",afb:1,pts:5,
+        label:"Zuordnung – Begriffe und Erklärungen",
+        pairs:[
+          ["Antisemitismus","Hass und Feindschaft gegenüber Juden"],
+          ["Führerprinzip","Unbedingte Unterordnung unter Hitler"],
+          ["Lebensraum","Forderung nach Land in Osteuropa"],
+          ["Gleichschaltung","Unterordnung aller Bereiche unter NSDAP"],
+          ["Mefo-Wechsel","Versteckte Schulden für Rüstung"],
+        ]},
+      {type:"open",afb:3,pts:5,
+        q:"Beurteile: Warum konnten Hitlers Ideen für viele Deutsche in der Krise attraktiv erscheinen? Nenne zwei Gründe.",
+        model:"1) Einfache Feindbilder: In der Wirtschaftskrise boten Hitlers 'Erklärungen' Orientierung – klare Schuldige (Juden, Kommunisten). 2) Versprechen von Stärke: Das Versprechen, die 'Schmach von Versailles' rückgängig zu machen, sprach viele an."},
+    ]
+  },
+  { id:4,
+    title:"5. Reichstagsbrandverordnung",
+    checks:["Ich kann erklären, womit der Erlass der Reichstagsbrandverordnung begründet wird und welche Folgen dieser Erlass hatte."],
+    hilfen:["AB Baustein 1"],
+    recoPage:"AB Baustein 1 | SB S. 130–131",
+    exercises:[
+      {type:"gap",afb:1,pts:5,
+        label:"Lückentext – Reichstagsbrand",
+        template:"In der Nacht vom __1__ brannte der Reichstag. Die NSDAP beschuldigte die __2__ und nutzte dies als Vorwand. Am __3__ unterzeichnete Hindenburg die __4__, die wichtige Grundrechte außer Kraft setzte. Damit konnten politische Gegner ohne __5__ verhaftet werden.",
+        blanks:["27./28. Februar 1933","Kommunisten (KPD)","28. Februar 1933","Reichstagsbrandverordnung","Gerichtsbeschluss"],
+        slots:["1","2","3","4","5"]},
+      {type:"open",afb:2,pts:5,
+        q:"Erkläre, welche Grundrechte die Reichstagsbrandverordnung außer Kraft setzte und welche Folgen das hatte.",
+        model:"Die Verordnung setzte u.a. Meinungsfreiheit, Pressefreiheit, Versammlungsfreiheit, Briefgeheimnis und persönliche Freiheit außer Kraft. Folge: Politische Gegner konnten ohne Gerichtsbeschluss verhaftet werden. Die NSDAP nutzte dies zur Ausschaltung der Opposition."},
+    ]
+  },
+  { id:5,
+    title:"6. Ermächtigungsgesetz",
+    checks:["Ich kann erklären, womit das Ermächtigungsgesetz begründet wird und welche Befugnisse die Nationalsozialisten nun erhalten haben."],
+    hilfen:["AB Baustein 2"],
+    recoPage:"AB Baustein 2 | SB S. 132–133",
+    exercises:[
+      {type:"gap",afb:1,pts:4,
+        label:"Lückentext – Ermächtigungsgesetz",
+        template:"Das Ermächtigungsgesetz wurde am __1__ verabschiedet. Es erlaubte der Reichsregierung, Gesetze ohne Zustimmung des __2__ zu erlassen. Diese Gesetze durften sogar von der __3__ abweichen. Das Gesetz sollte formal bis __4__ gelten, wurde aber verlängert. Damit war die parlamentarische __5__ faktisch abgeschafft.",
+        blanks:["23. März 1933","Reichstags","Weimarer Verfassung","1. April 1937","Demokratie"],
+        slots:["1","2","3","4","5"]},
+      {type:"open",afb:2,pts:5,
+        q:"Erkläre, was das Ermächtigungsgesetz war und welche Folgen es hatte.",
+        model:"Das Ermächtigungsgesetz erlaubte der Reichsregierung, Gesetze ohne Reichstag zu erlassen – auch gegen die Weimarer Verfassung. Folge: Das Parlament verlor seine Macht, Hitler konnte alleine regieren. Die parlamentarische Demokratie war damit abgeschafft."},
+      {type:"open",afb:3,pts:5,
+        q:"Beurteile: War das Ermächtigungsgesetz ein legaler Akt oder der Beginn der Diktatur?",
+        model:"Für Legalität: Formal wurde es mit Zweidrittelmehrheit beschlossen. Gegen Legalität: KPD-Abgeordnete waren verhaftet, SA bedrohte das Parlament, die Abstimmung war nicht frei. Fazit: Das Gesetz war nur scheinbar legal – es benutzte die Form der Demokratie, um sie zu zerstören."},
+    ]
+  },
+  { id:6,
+    title:"7. Wirtschaft & Erfolg?",
+    checks:[
+      "Ich kann beurteilen, ob der Wirtschaftsaufschwung der Nationalsozialisten ein echter Erfolg war.",
+      "Ich kann erklären, warum viele Deutsche Hitler unterstützten."
+    ],
+    hilfen:["SB S. 148–149"],
+    recoPage:"SB S. 148–149 + Tafelbild",
+    exercises:[
+      {type:"mc",pool:"wirtschaft",afb:1,pts:3},
+      {type:"gap",afb:2,pts:5,
+        label:"Lückentext – Wirtschaftswunder?",
+        template:"Die Arbeitslosigkeit sank nach 1933 von ca. __1__ auf fast null. Doch der Aufschwung beruhte auf __2__. Der Staat bezahlte Unternehmen mit __3__ – geheimen Schulden. Diese wuchsen auf __4__ Milliarden Reichsmark. Der Aufschwung war in Wirklichkeit eine __5__, die Deutschland auf den Krieg vorbereitete.",
+        blanks:["6 Millionen","Rüstungsausgaben","Mefo-Wechseln","12","Rüstungskonjunktur"],
+        slots:["1","2","3","4","5"]},
+      {type:"open",afb:3,pts:6,
+        source:'"Keine Notenbank ist imstande, die Ausgabenwirtschaft eines Staates aufrechtzuerhalten gegen eine inflationistische Ausgabepolitik." — Schacht, Jan. 1939',
+        q:"Beurteile: War der NS-Wirtschaftsaufschwung ein echter Erfolg? Nutze die Quelle und nenne Argumente für beide Seiten.",
+        model:"Für Erfolg: Arbeitslosigkeit sank real, Menschen bekamen wieder Arbeit und Einkommen. / Gegen Erfolg: Schacht warnt selbst 1939 vor dem Staatsbankrott. Mefo-Wechsel versteckten Schulden. Vollbeschäftigung durch Rüstung = Kriegsvorbereitung, kein nachhaltiger Wohlstand. / Fazit: Keine echtes Wirtschaftswunder – Scheinkonjunktur auf Pump."},
+    ]
+  },
+  { id:7,
+    title:"8. Unterstützung für Hitler",
+    checks:["Ich kann erklären, warum viele Deutsche Hitler unterstützten."],
+    hilfen:["SB S. 148–149"],
+    recoPage:"SB S. 148–149",
+    exercises:[
+      {type:"open",afb:1,pts:3,
+        q:"Nenne drei Gründe, warum viele Deutsche Hitler nach 1933 unterstützten.",
+        model:"1) Wirtschaft: Arbeitslosigkeit sank – viele bekamen wieder Arbeit. 2) Propaganda: Goebbels kontrollierte alle Medien, die Menschen hörten nur Positives. 3) Nationalismus: Versprechen, die Schmach von Versailles rückgängig zu machen."},
+      {type:"match",afb:2,pts:4,
+        label:"Zuordnung – Grund zur Unterstützung",
+        pairs:[
+          ["Arbeitslosigkeit sank","Wirtschaftliche Verbesserung als Hauptgrund"],
+          ["Volksempfänger","Propaganda erreichte alle Haushalte"],
+          ["'Schmach von Versailles'","Nationalismus als Mobilisierungsgrund"],
+          ["Gleichschaltung der Presse","Kritische Informationen wurden unterdrückt"],
+        ]},
+      {type:"open",afb:3,pts:6,
+        q:"Beurteile: Hätten die Deutschen 1933 erkennen können, wohin Hitlers Politik führen würde?",
+        model:"Einerseits: 'Mein Kampf' war öffentlich – Hitlers Pläne waren bekannt. / Andererseits: Propaganda verhinderte kritisches Denken, Angst vor Repression hielt viele zurück, Hintergründe wurden verborgen. / Fazit: Hinweise gab es – aber Propaganda und persönliche Not haben viele daran gehindert, das volle Bild zu sehen."},
+    ]
+  },
+];
+
+// ─── FUZZY MATCH ──────────────────────────────
+function fuzzyMatch(ans,exp){
+  const n=s=>s.trim().toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss');
+  const a=n(ans),e=n(exp);
+  if(a===e) return true;
+  if(a.length>=4&&e.includes(a)) return true;
+  if(e.length>=4&&a.includes(e)) return true;
+  if(a.length<3||e.length<3) return false;
+  const mx=e.length<=6?1:2;
+  let dp=Array.from({length:a.length+1},(_,i)=>[i,...Array(e.length).fill(0)]);
+  for(let j=1;j<=e.length;j++) dp[0][j]=j;
+  for(let i=1;i<=a.length;i++)
+    for(let j=1;j<=e.length;j++)
+      dp[i][j]=a[i-1]===e[j-1]?dp[i-1][j-1]:1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+  return dp[a.length][e.length]<=mx;
+}
+function makeHint(exp){
+  const w=exp.trim();
+  if(w.length<=3) return `Tipp: ${w.length} Buchstaben.`;
+  return `Tipp: Beginnt mit "${w.slice(0,2).toUpperCase()}" (${w.length} Buchstaben)`;
+}
+
+// ─── RENDER OVERVIEW ──────────────────────────
+function renderOV(){
+  const done=SECS.filter(s=>ST[s.id]==='sicher').length;
+  const warn=SECS.filter(s=>ST[s.id]==='unsicher').length;
+  const allDone=SECS.every(s=>ST[s.id]);
+
+  let h=`<div class="ov-hero">
+    <h1>💡 <span>Fit</span> für den Test</h1>
+    <p>Geschichte · Klasse 9a · Test Nr. 2</p>
+  </div>
+  <div class="thema-box">
+    <span class="thema-lbl">Thema:</span>
+    <span class="thema-text">Nationalsozialismus und Zweiter Weltkrieg – Vergangenheit, die nicht vergeht</span>
+    <div class="thema-sub"><u>Unterthema:</u> Aus einer Demokratie wird eine Diktatur</div>
+  </div>
+  <div class="meta-chips">
+    <div class="meta-chip"><span class="mc-icon">✅</span> ${done} Sicher</div>
+    <div class="meta-chip"><span class="mc-icon">⚠️</span> ${warn} Noch üben</div>
+    <div class="meta-chip"><span class="mc-icon">📋</span> ${SECS.length-done-warn} Offen</div>
+  </div>`;
+
+  if(warn>0) h+=`<div class="hint-box">⚠️ <strong>${warn} Thema${warn>1?'en':''} noch unsicher</strong> – klicke auf die orange markierten Bereiche!</div>`;
+  if(done===SECS.length) h+=`<div style="background:#d4edda;border-left:4px solid #27ae60;border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:10px;font-size:14px;color:#155724;font-weight:700">🎉 Alle 8 Lernziele bearbeitet – viel Erfolg bei der Überprüfung!</div>`;
+
+  SECS.forEach(s=>{
+    const t=THEMES[s.id];
+    const st=ST[s.id];
+    const bdgCls=st==='sicher'?'sb-s':st==='unsicher'?'sb-u':'sb-o';
+    const bdgTxt=st==='sicher'?'✓ Sicher':st==='unsicher'?'⚠ Noch üben':'Noch offen';
+    const hilfen=s.hilfen.map(h=>typeof h==='string'?`<li>${h}</li>`:`<li><a href="${h.link}" target="_blank">${h.linkText}</a></li>`).join('');
+
+    h+=`<div class="ov-sec-card" style="background:${t.bg};border-color:${t.border}" onclick="go(${s.id})">
+      <div class="ov-sec-inner">
+        <div class="sec-icon-wrap" style="background:${t.iconBg};border-color:${t.border}">
+          <span style="font-size:20px">${t.icon}</span>
+        </div>
+        <div class="ov-sec-info">
+          <div class="ov-sec-title" style="color:${t.color}">${s.title}</div>
+        </div>
+        <div><span class="status-badge ${bdgCls}">${bdgTxt}</span></div>
+      </div>
+      <div class="ov-checks">
+        ${s.checks.map(c=>{
+          const chkDone=st==='sicher';
+          return `<div class="ov-check"><div class="ov-cb ${chkDone?'done':''}">${chkDone?'✓':''}</div>${c}</div>`;
+        }).join('')}
+      </div>
+      <div class="hilfen-wrap">
+        <div class="hilfen-note"><ul style="list-style:none;padding:0">${hilfen}</ul></div>
+      </div>
+    </div>`;
+  });
+
+  if(allDone) h+=`<button class="eval-btn-big" onclick="go('eval')">📊 Gesamtauswertung ansehen →</button>`;
+  h+=`<div class="motivator">⭐ Du schaffst das! ❤️ Bleib dran! ⭐</div>`;
+  document.getElementById('mc').innerHTML=h;
+}
+
+// ─── RENDER SECTION ───────────────────────────
+function renderSec(sec){
+  const t=THEMES[sec.id];
+  const st=ST[sec.id];
+  let exH='';
+
+  sec.exercises.forEach((ex,i)=>{
+    const rid=`${sec.id}-${i}`;
+    const afbL=ex.afb===1?'AFB I – Wiedergabe':ex.afb===2?'AFB II – Analyse':'AFB III – Beurteilung';
+    const cls=ex.type==='gap'?'gap':ex.type==='timeline'?'drag':ex.type==='match'?'match':`a${ex.afb}`;
+    exH+=`<div class="ex ${cls}" id="ex-${rid}">
+      <div class="afb-tag">${ex.label||afbL} · ${ex.pts} Punkte</div>`;
+
+    if(ex.type==='mc'){
+      const q=pickMC(MCP[ex.pool]);
+      const opts=shOpts(q.opts);
+      exH+=`<div class="qtext">${q.q}</div><div class="mc-opts" id="mc-${rid}">`;
+      opts.forEach((o,oi)=>{
+        exH+=`<div class="mco" id="mco-${rid}-${oi}" onclick="chkMC('${rid}',${oi},${o.c})">
+          <div class="ci" id="ci-${rid}-${oi}"></div>${o.t}</div>`;
+      });
+      exH+=`</div>`;
+    }
+    else if(ex.type==='gap'){
+      let txt=ex.template;
+      ex.slots.forEach((sl,si)=>{
+        txt=txt.replace(`__${sl}__`,`<input class="gap-input" id="gi-${rid}-${si}" placeholder="?" data-ans="${ex.blanks[si]}" autocomplete="off"><span class="gap-hint" id="gh-${rid}-${si}"></span>`);
+      });
+      exH+=`<div class="gap-text">${txt}</div>
+        <button class="check-gap-btn" onclick="chkGap('${rid}',${ex.blanks.length})">✓ Antworten prüfen</button>
+        <div class="gap-feedback" id="gf-${rid}"></div>`;
+    }
+    else if(ex.type==='timeline'){
+      const items=[...ex.items].sort(()=>Math.random()-.5);
+      TL_DATA[rid]=ex.items;
+      exH+=`<div class="qtext">${ex.label}</div>
+        <div class="tl-pool" id="tlpool-${rid}" ondragover="ev(event)" ondrop="dropPool(event,'${rid}')">`;
+      items.forEach(it=>{
+        exH+=`<div class="tl-chip" id="chip-${rid}-${it.id}" draggable="true"
+          ondragstart="dragStart(event,'${rid}','${it.id}')"
+          ontouchstart="tStart(event,'${rid}','${it.id}')"
+          ontouchmove="tMove(event)" ontouchend="tEnd(event,'${rid}')">${it.t}</div>`;
+      });
+      exH+=`</div><div class="tl-slots" id="tlslots-${rid}">`;
+      ex.items.forEach((_,si)=>{
+        exH+=`<div class="tl-slot" id="tls-${rid}-${si}"
+          ondragover="ev(event)" ondrop="dropSlot(event,'${rid}',${si})"
+          ontouchend="tEnd(event,'${rid}',${si})">
+          <div class="slot-nr">${si+1}</div>
+          <div class="slot-drop" id="slotd-${rid}-${si}">Hierher ziehen…</div>
+        </div>`;
+      });
+      exH+=`</div>
+        <button class="tl-check-btn" onclick="chkTL('${rid}')">✓ Reihenfolge prüfen</button>
+        <div class="tl-result" id="tlr-${rid}"></div>`;
+    }
+    else if(ex.type==='match'){
+      if(!matchSt[rid]) matchSt[rid]={selTerm:null,selDef:null,pairs:ex.pairs,done:[]};
+      const terms=ex.pairs.map(p=>p[0]);
+      const defs=[...ex.pairs.map(p=>p[1])].sort(()=>Math.random()-.5);
+      exH+=`<div class="qtext">${ex.label||'Ordne zu.'}</div>
+        <div class="match-grid">
+          <div><div class="match-col-lbl">Begriff</div>
+            ${terms.map((t2,ti)=>`<div class="mi" id="mt-${rid}-${ti}" onclick="selTerm('${rid}',${ti},'${t2.replace(/'/g,"\\'")}')"> ${t2}</div>`).join('')}
+          </div>
+          <div><div class="match-col-lbl">Erklärung</div>
+            ${defs.map((d,di)=>`<div class="mi" id="md-${rid}-${di}" onclick="selDef('${rid}',${di},'${d.replace(/'/g,"\\'")}')"> ${d}</div>`).join('')}
+          </div>
+        </div>`;
+    }
+    else if(ex.type==='open'){
+      if(ex.source) exH+=`<div class="srcbox">${ex.source}</div>`;
+      exH+=`<div class="qtext">${ex.q}</div>
+        <textarea class="ta" id="ta-${rid}" rows="4" placeholder="Deine Antwort hier…"></textarea>
+        <button class="show-btn" id="sb-${rid}" onclick="toggleModel('${rid}')">💡 Musterlösung anzeigen</button>
+        <div class="muster" id="ms-${rid}">
+          <strong>Musterlösung:</strong><br>${ex.model}
+          <div class="selfcheck">
+            <p>Hast du die wichtigsten Punkte getroffen?</p>
+            <button class="sc-btn" id="scy-${rid}" onclick="selfCheck('${rid}','yes')">👍 Ja</button>
+            <button class="sc-btn" id="scn-${rid}" onclick="selfCheck('${rid}','no')">👎 Noch nicht</button>
+          </div>
+        </div>`;
+    }
+    exH+=`</div>`;
+  });
+
+  // Hilfen note
+  const hilfen=sec.hilfen.map(h=>typeof h==='string'?`• ${h}`:
+    `• <a href="${h.link}" target="_blank" style="color:#1a73e8;font-weight:700">${h.linkText}</a>`).join('<br>');
+
+  const done=Object.keys(ST).filter(k=>ST[k]).length;
+  const pct=Math.round(done/SECS.length*100);
+
+  const h=`
+  <button class="back-btn" onclick="go('ov')">‹ Zurück zur Übersicht</button>
+  <div class="sec-card" style="background:${t.bg};border-color:${t.border}">
+    <div class="sec-card-hdr">
+      <div class="sec-icon-wrap" style="background:${t.iconBg};border-color:${t.border}">
+        <span style="font-size:22px">${t.icon}</span>
+      </div>
+      <div class="sec-title-wrap">
+        <div class="sec-title" style="color:${t.color}">${sec.title}</div>
+        <div class="sec-sub">${sec.checks[0].replace('Ich kann ','').replace(/\.$/, '')}</div>
+      </div>
+      <div class="sec-status">
+        <span class="status-badge ${st==='sicher'?'sb-s':st==='unsicher'?'sb-u':'sb-o'}">${st==='sicher'?'✓ Sicher':st==='unsicher'?'⚠ Üben':'Offen'}</span>
+      </div>
+    </div>
+
+    <!-- Checkliste -->
+    ${sec.checks.map(c=>`<div class="sec-check">
+      <div class="chk-box ${st==='sicher'?'checked':''}">${st==='sicher'?'✓':''}</div>
+      ${c}
+    </div>`).join('')}
+
+    <!-- Hilfen -->
+    <div class="hilfen-wrap">
+      <div class="hilfen-note">${hilfen}</div>
+    </div>
+
+    <!-- Exercises -->
+    <div class="sec-body open">
+      <div class="exwrap">
+        <div class="ex-section-lbl">Übungsaufgaben</div>
+        ${exH}
+      </div>
+
+      <!-- FINISH AREA -->
+      <div class="finish-area">
+        <h3>✏️ Thema abschließen</h3>
+
+        <!-- Mini Progress -->
+        <div class="mini-pb-wrap">
+          <div class="mini-pb-bar"><div class="mini-pb-fill" id="mpb-${sec.id}" style="width:${pct}%"></div></div>
+          <span class="mini-pb-lbl" id="mpbl-${sec.id}">${done}/${SECS.length} Themen</span>
+        </div>
+
+        <p style="font-size:13px;color:#555;margin-bottom:8px;font-weight:700">Wie sicher bist du bei diesem Thema?</p>
+        <div class="finish-btns">
+          <button class="fin-btn s ${st==='sicher'?'sel':''}" id="fins-${sec.id}" onclick="finishSec(${sec.id},'sicher')">
+            ✅ Ich kann das erklären!
+          </button>
+          <button class="fin-btn u ${st==='unsicher'?'sel':''}" id="finu-${sec.id}" onclick="finishSec(${sec.id},'unsicher')">
+            ⚠️ Ich muss noch üben
+          </button>
+        </div>
+
+        <div class="finish-result ${st?'vis':''}" id="finres-${sec.id}">
+          ${st?buildFinResult(sec,st):''}
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+  document.getElementById('mc').innerHTML=h;
+}
+
+function buildFinResult(sec,val){
+  const nextTitle=sec.id<SECS.length-1?SECS[sec.id+1].title:null;
+  return `<div class="fin-res-box ${val==='sicher'?'g':'o'}">
+    ${val==='sicher'
+      ?`✅ <strong>Super – Thema abgeschlossen!</strong><br>Gut gemacht! Weiter zum nächsten Thema.`
+      :`⚠️ <strong>Noch Übungsbedarf</strong><br>Schau ins Schulbuch (${sec.recoPage}) und probiere es nochmal!`}
+  </div>
+  <div class="fin-nav">
+    ${nextTitle
+      ?`<button class="fin-next" onclick="go(${sec.id+1})">→ Weiter: ${nextTitle}</button>`
+      :`<button class="fin-next" style="background:#27ae60" onclick="go('eval')">📊 Alle fertig – Auswertung!</button>`}
+    <button class="fin-ov" onclick="go('ov')">📋 Übersicht</button>
+  </div>`;
+}
+
+// ─── FINISH SEC ───────────────────────────────
+function finishSec(id,val){
+  ST[id]=val;
+  updProg();
+
+  const nb=document.getElementById('n'+id);
+  if(nb){nb.className='nb active';nb.classList.add(val==='sicher'?'done':'warn');}
+
+  document.getElementById(`fins-${id}`)?.classList.toggle('sel',val==='sicher');
+  document.getElementById(`finu-${id}`)?.classList.toggle('sel',val==='unsicher');
+
+  const done=Object.keys(ST).filter(k=>ST[k]).length;
+  const pct=Math.round(done/SECS.length*100);
+  const mpb=document.getElementById(`mpb-${id}`);
+  const mpbl=document.getElementById(`mpbl-${id}`);
+  if(mpb) mpb.style.width=pct+'%';
+  if(mpbl) mpbl.textContent=`${done}/${SECS.length} Themen`;
+
+  const res=document.getElementById(`finres-${id}`);
+  if(res){res.classList.add('vis');res.innerHTML=buildFinResult(SECS[id],val);}
+}
+
+// ─── MC CHECK ─────────────────────────────────
+function chkMC(rid,oi,correct){
+  document.querySelectorAll(`[id^="mco-${rid}-"]`).forEach(el=>el.classList.add('lk'));
+  document.getElementById(`mco-${rid}-${oi}`)?.classList.add(correct?'ok':'no');
+  const ci=document.getElementById(`ci-${rid}-${oi}`);
+  if(ci) ci.textContent=correct?'✓':'✗';
+}
+
+// ─── GAP CHECK ────────────────────────────────
+function chkGap(rid,n){
+  let ok=0;
+  for(let i=0;i<n;i++){
+    const inp=document.getElementById(`gi-${rid}-${i}`);
+    const hint=document.getElementById(`gh-${rid}-${i}`);
+    if(!inp||inp.readOnly){ok++;continue;}
+    const ans=inp.value.trim(),exp=inp.dataset.ans;
+    const key=`${rid}-${i}`;
+    if(!gapAttempts[key]) gapAttempts[key]=0;
+    if(fuzzyMatch(ans,exp)){
+      inp.classList.add('gg');inp.readOnly=true;
+      if(hint) hint.style.display='none';
+      ok++;
+    } else {
+      gapAttempts[key]++;
+      if(gapAttempts[key]===1){
+        inp.classList.add('gh');
+        if(hint){hint.textContent=makeHint(exp);hint.style.display='inline';}
+      } else {
+        inp.classList.remove('gh');inp.classList.add('gw');
+        inp.value=exp;inp.readOnly=true;
+        if(hint){hint.textContent=`→ ${exp}`;hint.style.cssText='display:inline;color:#c0392b;font-size:11px;margin-left:4px;font-weight:700';}
+      }
+    }
+  }
+  const fb=document.getElementById(`gf-${rid}`);
+  fb.className='gap-feedback vis';
+  const open=Array.from({length:n},(_,i)=>i).filter(i=>!document.getElementById(`gi-${rid}-${i}`)?.readOnly).length;
+  if(ok===n){fb.classList.add('gfok');fb.textContent=`✅ Alle ${n} Lücken richtig! 🎉`;}
+  else if(open>0){fb.style.cssText='display:block;background:#fff3cd;color:#856404;padding:7px 10px;border-radius:8px;font-weight:700;';fb.textContent=`${ok} von ${n} richtig. Schau die Hinweise an und versuche die gelben Felder nochmal!`;}
+  else{fb.classList.add('gfno');fb.textContent=`${ok} von ${n} Lücken selbst gelöst. Die roten Lösungen bitte auswendig lernen!`;}
+}
+
+// ─── OPEN TOGGLE ──────────────────────────────
+function toggleModel(rid){
+  const ms=document.getElementById(`ms-${rid}`);
+  const btn=document.getElementById(`sb-${rid}`);
+  const v=ms.classList.toggle('vis');
+  btn.textContent=v?'💡 Musterlösung ausblenden':'💡 Musterlösung anzeigen';
+  btn.classList.toggle('shown',v);
+}
+function selfCheck(rid,val){
+  document.getElementById(`scy-${rid}`)?.classList.toggle('yes',val==='yes');
+  document.getElementById(`scn-${rid}`)?.classList.toggle('no',val==='no');
+  document.getElementById(`scy-${rid}`)?.classList.toggle('no',false);
+  document.getElementById(`scn-${rid}`)?.classList.toggle('yes',false);
+  if(val==='yes') document.getElementById(`scy-${rid}`).className='sc-btn yes';
+  else document.getElementById(`scn-${rid}`).className='sc-btn no';
+}
+
+// ─── MATCH ────────────────────────────────────
+function selTerm(rid,ti,term){
+  const s=matchSt[rid];if(!s||s.done.includes('T'+ti)) return;
+  document.querySelectorAll(`[id^="mt-${rid}-"]`).forEach(e=>{if(!e.classList.contains('md')) e.classList.remove('ms');});
+  s.selTerm={idx:ti,val:term};
+  document.getElementById(`mt-${rid}-${ti}`)?.classList.add('ms');
+  tryMatch(rid);
+}
+function selDef(rid,di,def){
+  const s=matchSt[rid];if(!s||s.done.includes('D'+di)) return;
+  document.querySelectorAll(`[id^="md-${rid}-"]`).forEach(e=>{if(!e.classList.contains('md')) e.classList.remove('ms');});
+  s.selDef={idx:di,val:def};
+  document.getElementById(`md-${rid}-${di}`)?.classList.add('ms');
+  tryMatch(rid);
+}
+function tryMatch(rid){
+  const s=matchSt[rid];
+  if(!s?.selTerm||!s?.selDef) return;
+  const ok=s.pairs.find(p=>p[0]===s.selTerm.val&&p[1]===s.selDef.val);
+  const te=document.getElementById(`mt-${rid}-${s.selTerm.idx}`);
+  const de=document.getElementById(`md-${rid}-${s.selDef.idx}`);
+  if(ok){
+    te?.classList.replace('ms','md');de?.classList.replace('ms','md');
+    s.done.push('T'+s.selTerm.idx,'D'+s.selDef.idx);
+  } else {
+    te?.classList.add('mw');de?.classList.add('mw');
+    setTimeout(()=>{te?.classList.remove('mw','ms');de?.classList.remove('mw','ms');},700);
+  }
+  s.selTerm=null;s.selDef=null;
+}
+
+// ─── TIMELINE ─────────────────────────────────
+function ev(e){e.preventDefault();}
+function dragStart(e,rid,id){dragItem=id;e.dataTransfer.effectAllowed='move';}
+function dropSlot(e,rid,si){
+  e.preventDefault();if(!dragItem) return;
+  const slot=document.getElementById(`slotd-${rid}-${si}`);
+  const prev=slot.dataset.itemId;
+  if(prev) document.getElementById(`chip-${rid}-${prev}`)?.classList.remove('placed');
+  slot.dataset.itemId=dragItem;
+  const chip=document.getElementById(`chip-${rid}-${dragItem}`);
+  slot.textContent=chip?.textContent||'';
+  slot.classList.add('has');
+  chip?.classList.add('placed');
+  dragItem=null;
+}
+function dropPool(e,rid){
+  e.preventDefault();if(!dragItem) return;
+  document.getElementById(`chip-${rid}-${dragItem}`)?.classList.remove('placed');
+  document.querySelectorAll(`[id^="slotd-${rid}-"]`).forEach(sl=>{
+    if(sl.dataset.itemId===dragItem){sl.dataset.itemId='';sl.textContent='Hierher ziehen…';sl.classList.remove('has');}
+  });
+  dragItem=null;
+}
+function tStart(e,rid,id){
+  dragItem=id;
+  tghost=document.createElement('div');tghost.className='tghost';
+  tghost.textContent=e.currentTarget.textContent.trim();
+  document.body.appendChild(tghost);mvG(e.touches[0]);
+}
+function tMove(e){e.preventDefault();if(tghost)mvG(e.touches[0]);}
+function tEnd(e,rid,si){
+  if(tghost){tghost.remove();tghost=null;}
+  if(!dragItem) return;
+  if(si!==undefined){dropSlot(e,rid,si);}
+  else{
+    const t=e.changedTouches[0];
+    const el=document.elementFromPoint(t.clientX,t.clientY);
+    const slot=el?.closest('[id^="slotd-"]');
+    if(slot){const p=slot.id.split('-');dropSlot(e,rid,parseInt(p[p.length-1]));}
+    else dropPool(e,rid);
+  }
+  dragItem=null;
+}
+function mvG(t){if(!tghost) return;tghost.style.left=(t.clientX-60)+'px';tghost.style.top=(t.clientY-20+window.scrollY)+'px';}
+function chkTL(rid){
+  const items=TL_DATA[rid];
+  if(!items) return;
+  let ok=0;
+  items.forEach((it,si)=>{
+    const slot=document.getElementById(`slotd-${rid}-${si}`);
+    const slotEl=document.getElementById(`tls-${rid}-${si}`);
+    const placed=slot?.dataset.itemId;
+    const correct=items.find(x=>x.order===si+1);
+    if(placed===correct?.id){ok++;slotEl?.classList.add('cor');}
+    else slotEl?.classList.add('wro');
+  });
+  const res=document.getElementById(`tlr-${rid}`);
+  res.className='tl-result vis';
+  res.innerHTML=ok===items.length
+    ?`✅ Alle ${ok} richtig! ${items.map(x=>x.date+': '+x.t).join(' → ')}`
+    :`${ok}/${items.length} richtig. ✅=richtig, ❌=falsch.<br><strong>Lösung:</strong> ${items.map(x=>`${x.order}. ${x.date}: ${x.t}`).join(' | ')}`;
+}
+
+// ─── STATUS + PROGRESS ────────────────────────
+function updProg(){
+  const done=Object.keys(ST).filter(k=>ST[k]).length;
+  const pct=Math.round(done/SECS.length*100);
+  document.getElementById('pb').style.width=pct+'%';
+  document.getElementById('pbl').textContent=`${done} von ${SECS.length} Lernzielen abgeschlossen`;
+  SECS.forEach(s=>{
+    const nb=document.getElementById('n'+s.id);if(!nb) return;
+    const wa=nb.classList.contains('active');
+    nb.className='nb'+(wa?' active':'');
+    if(ST[s.id]==='sicher') nb.classList.add('done');
+    else if(ST[s.id]==='unsicher') nb.classList.add('warn');
+  });
+}
+
+// ─── EVAL ─────────────────────────────────────
+function renderEval(){
+  const sicher=SECS.filter(s=>ST[s.id]==='sicher').length;
+  const total=SECS.length;
+  const pct=Math.round(sicher/total*100);
+  const cat=pct>=75?'gr':pct>=50?'go':'gw';
+  const emoji=pct>=75?'🎉':pct>=50?'👍':'💪';
+  const msg=pct>=75?'Super vorbereitet!':pct>=50?'Guter Fortschritt!':'Noch Übungsbedarf';
+
+  const unsicher=SECS.filter(s=>ST[s.id]==='unsicher'||!ST[s.id]);
+  let recos='';
+  if(unsicher.length>0){
+    recos=`<div class="reco-box">
+      <strong>📚 Deine Lernempfehlung:</strong>
+      ${unsicher.map(s=>`• <strong>${s.title}</strong> → ${s.recoPage}`).join('<br>')}
+      <br><br>🎯 <strong>Besonders wichtig für den Test:</strong><br>
+      • Begriffe erklären können (Gleichschaltung, Führerprinzip, Antisemitismus)<br>
+      • Quelle M1 (Schacht) vorstellen + Inhalt erklären<br>
+      • Wirtschaftsaufschwung beurteilen – Schein vs. Wirklichkeit
+    </div>`;
+  }
+
+  let items='';
+  SECS.forEach(s=>{
+    const st=ST[s.id];
+    const t=THEMES[s.id];
+    const ico=st==='sicher'?'✅':st==='unsicher'?'⚠️':'⭕';
+    const bcls=st==='sicher'?'g':st==='unsicher'?'o':'r';
+    const blbl=st==='sicher'?'Sicher ✓':st==='unsicher'?'Noch üben!':'Nicht bearbeitet';
+    items+=`<div class="ev-item">
+      <div class="ev-ico">${t.icon}</div>
+      <div class="ev-info"><div class="ev-title">${s.title}</div></div>
+      <span class="ev-badge ${bcls}">${blbl}</span>
+    </div>`;
+  });
+
+  const h=`
+  <button class="back-btn" onclick="go('ov')">‹ Zurück</button>
+  <div style="background:#fff;border-radius:16px;border:2px solid #e8e8e8;overflow:hidden;padding:16px">
+    <div class="eval-hero ${cat}">
+      <div class="eval-score">${emoji} ${pct}%</div>
+      <div class="eval-msg">${msg}</div>
+      <div class="eval-sub">${sicher} von ${total} Themen als "Sicher" markiert</div>
+    </div>
+    <div class="eval-list">${items}</div>
+    ${recos}
+    <button class="eval-finish" onclick="go('ov')">🔄 Zurück – nochmal üben</button>
+  </div>
+  <div class="motivator">⭐ Du schaffst das! ❤️ Bleib dran! ⭐</div>`;
+  document.getElementById('mc').innerHTML=h;
+}
+
+// ─── NAVIGATION ───────────────────────────────
+function go(id){
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  if(id==='ov'){document.querySelector('.nb').classList.add('active');renderOV();}
+  else if(id==='eval'){renderEval();}
+  else{
+    const nb=document.getElementById('n'+id);if(nb) nb.classList.add('active');
+    renderSec(SECS[id]);
+    window.scrollTo(0,0);
+  }
+}
+
+go('ov');
+</script>
+</body>
+</html>
