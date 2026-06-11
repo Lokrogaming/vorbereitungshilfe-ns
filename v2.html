@@ -1,0 +1,508 @@
+!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="developer" content="https://htmlhoster.lovable.app">
+    <title>Fit für den Test – Geschichte Klasse 9a (Dark Mode)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Caveat:wght@400;600;700&display=swap');
+
+        :root {
+            /* Dark Theme Colors - Modern Slate Palette */
+            --bg-body: #1e2124;
+            --bg-card: #2f3136;
+            --bg-card-alt: #36393f;
+            --bg-nav: #282b30;
+            --text-main: #dcddde;
+            --text-muted: #b9bbbe;
+            --text-accent: #7289da; /* Discord Blue Accent */
+            --accent-red: #f04747;
+            --accent-green: #43b581;
+            --accent-yellow: #faa61a;
+            --border-color: #40444b;
+            --hdr-grad: linear-gradient(135deg, #2c2f33 0%, #23272a 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ── HEADER ── */
+        .hdr {
+            background: var(--bg-nav);
+            border-bottom: 3px solid var(--accent-yellow);
+            padding: 14px 18px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .hdr-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hdr-title {
+            font-family: 'Caveat', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .hdr-title span {
+            color: var(--accent-red);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-red);
+            text-underline-offset: 4px;
+        }
+
+        .hdr-meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .hdr-chip {
+            background: var(--bg-card);
+            border: 1.5px solid var(--accent-yellow);
+            border-radius: 12px;
+            padding: 4px 12px;
+            font-size: 12px;
+            color: var(--text-accent);
+            font-weight: 700;
+        }
+
+        .pb-wrap {
+            margin-top: 12px;
+            background: #18191c;
+            border-radius: 20px;
+            height: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .pb {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #5865f2, #7289da);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .pb-lbl {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        /* ── NAV ── */
+        .nav {
+            display: flex;
+            gap: 8px;
+            padding: 12px 14px;
+            background: var(--bg-body);
+            border-bottom: 2px solid var(--border-color);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav::-webkit-scrollbar { display: none; }
+
+        .nb {
+            padding: 8px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            font-size: 13px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        .nb:hover {
+            border-color: var(--text-accent);
+            background: var(--bg-card-alt);
+        }
+
+        .nb.active {
+            background: var(--text-accent);
+            color: #fff;
+            border-color: var(--text-accent);
+        }
+
+        .nb.done { border-color: var(--accent-green); color: var(--accent-green); }
+        .nb.warn { border-color: var(--accent-yellow); color: var(--accent-yellow); }
+
+        /* ── MAIN ── */
+        .main { padding: 20px 14px; max-width: 800px; margin: 0 auto; }
+
+        .ov-hero h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .thema-box {
+            background: var(--bg-card);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .thema-lbl {
+            background: var(--accent-red);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 14px;
+            margin-right: 10px;
+            color: white;
+        }
+
+        /* ── CARDS ── */
+        .ov-sec-card, .sec-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 18px;
+            margin-bottom: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .ov-sec-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border-color: var(--text-accent);
+        }
+
+        .ov-sec-inner { padding: 16px; display: flex; align-items: center; gap: 15px; }
+
+        .sec-icon-wrap {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            background: var(--bg-card-alt);
+            border: 2px solid var(--border-color);
+        }
+
+        .ov-sec-title {
+            font-family: 'Caveat', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+        .sb-s { background: rgba(67, 181, 129, 0.2); color: #43b581; border: 1px solid #43b581; }
+        .sb-u { background: rgba(250, 166, 26, 0.2); color: #faa61a; border: 1px solid #faa61a; }
+        .sb-o { background: rgba(185, 187, 190, 0.1); color: #b9bbbe; border: 1px solid #4f545c; }
+
+        /* ── EXERCISES ── */
+        .ex {
+            background: var(--bg-card-alt);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--border-color);
+        }
+
+        .ex.a1 { border-color: var(--text-accent); }
+        .ex.a2 { border-color: #9b59b6; }
+        .ex.a3 { border-color: var(--accent-red); }
+
+        .afb-tag {
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--text-accent);
+        }
+
+        .qtext { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+
+        textarea.ta {
+            width: 100%;
+            background: #202225;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px;
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        textarea.ta:focus {
+            outline: none;
+            border-color: var(--text-accent);
+        }
+
+        /* MC Options */
+        .mco {
+            background: #202225;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+        }
+
+        .mco:hover { background: #2f3136; border-color: var(--text-muted); }
+        .mco.ok { border-color: var(--accent-green); background: rgba(67, 181, 129, 0.1); }
+        .mco.no { border-color: var(--accent-red); background: rgba(240, 71, 71, 0.1); }
+
+        .ci {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .mco.ok .ci { background: var(--accent-green); border-color: var(--accent-green); }
+        .mco.no .ci { background: var(--accent-red); border-color: var(--accent-red); }
+
+        /* Buttons */
+        .show-btn, .check-gap-btn, .fin-next {
+            background: var(--text-accent);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .show-btn:hover { background: #5b6eae; }
+
+        .muster {
+            background: #18191c;
+            border-left: 4px solid var(--accent-green);
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px 12px 12px 4px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .muster.vis { display: block; animation: slideIn 0.3s ease-out; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hilfen-note {
+            background: rgba(250, 166, 26, 0.1);
+            border: 1px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        .motivator {
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 24px;
+            color: var(--text-muted);
+            margin-top: 40px;
+            opacity: 0.7;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hdr">
+    <div class="hdr-top">
+        <div class="hdr-title">💡 <span>Fit</span> für den Test</div>
+        <div class="hdr-meta">
+            <span class="hdr-chip">📚 Geschichte</span>
+            <span class="hdr-chip">👥 Klasse 9a</span>
+            <span class="hdr-chip">🎯 Test Nr. 2</span>
+        </div>
+    </div>
+    <div class="pb-wrap"><div class="pb" id="pb" style="width:0%"></div></div>
+    <div class="pb-lbl" id="pbl">0 von 8 Lernzielen abgeschlossen</div>
+</div>
+
+<div class="nav" id="nav">
+    <button class="nb active" onclick="go('ov')">📋 Übersicht</button>
+    <button class="nb" id="n0" onclick="go(0)">1. Begriffe</button>
+    <button class="nb" id="n1" onclick="go(1)">2. Quellen</button>
+    <button class="nb" id="n2" onclick="go(2)">3. Diktatur</button>
+    <button class="nb" id="n3" onclick="go(3)">4. Ideologie</button>
+    <button class="nb" id="n4" onclick="go(4)">5. Reichstag</button>
+    <button class="nb" id="n5" onclick="go(5)">6. Ermächtigung</button>
+    <button class="nb" id="n6" onclick="go(6)">7. Wirtschaft</button>
+    <button class="nb" id="n7" onclick="go(7)">8. Unterstützung</button>
+</div>
+
+<div class="main" id="mc">
+    <!-- Content injected via JavaScript -->
+</div>
+
+<script>
+    // Note: Reusing core logic while ensuring UI elements are mapped to new dark theme classes
+    const ST = {};
+    const THEMES = Array(8).fill({
+        bg: 'var(--bg-card)', 
+        border: 'var(--border-color)', 
+        iconBg: 'var(--bg-card-alt)', 
+        color: '#fff',
+        icon: '📖'
+    });
+
+    const SECS = [
+        { id:0, title:"1. Grundwissen & Begriffe", checks:["Erklärung von Gleichschaltung, Antisemitismus, Führerprinzip"], model: "Gleichschaltung: Unterordnung aller gesellschaftlichen und politischen Organisationen unter die Kontrolle der NSDAP." },
+        { id:1, title:"2. Quellen & Analysen", checks:["Schriftliche Quellen analysieren"], model: "Quellenanalyse folgt dem Dreischritt: Analyse (Wer, Wann, Was), Einordnung in den historischen Kontext und Beurteilung der Intention." },
+        { id:2, title:"3. Weg zur NS-Diktatur", checks:["Wichtige Stationen 1933/34"], model: "Die 'Machtergreifung' war ein Prozess aus Scheinlegalität und Terror, beginnend mit der Ernennung Hitlers über den Reichstagsbrand zum Ermächtigungsgesetz." },
+        { id:3, title:"4. Ideologie", checks:["Kernpunkte der NS-Weltanschauung"], model: "Zentral waren Rassismus, Sozialdarwinismus, Antisemitismus und die Forderung nach 'Lebensraum im Osten'." },
+        { id:4, title:"5. Reichstagsbrand", checks:["Bedeutung der Brandverordnung"], model: "Die Verordnung setzte Grundrechte außer Kraft und ermöglichte die Verfolgung politischer Gegner (v.a. KPD)." },
+        { id:5, title:"6. Ermächtigung", checks:["Ende der Demokratie"], model: "Das Ermächtigungsgesetz von 1933 übertrug die gesetzgebende Gewalt auf Hitler und schaltete den Reichstag faktisch aus." },
+        { id:6, title:"7. Wirtschaft", checks:["Arbeitslosigkeit & Rüstung"], model: "Die Senkung der Arbeitslosigkeit basierte massiv auf Rüstungsprojekten und der Einführung der Wehrpflicht, finanziert durch Schulden (Mefo-Wechsel)." },
+        { id:7, title:"8. Unterstützung", checks:["Gründe für Hitlers Popularität"], model: "Wirtschaftlicher Aufschwung, Propaganda, außenpolitische 'Erfolge' und die Sehnsucht nach Ordnung führten zu großer Zustimmung." }
+    ];
+
+    function go(id) {
+        const container = document.getElementById('mc');
+        if (id === 'ov') {
+            renderOverview();
+        } else {
+            renderSection(id);
+        }
+        updateProgress();
+    }
+
+    function renderOverview() {
+        let html = `
+            <div class="ov-hero"><h1>History DarkBoard</h1></div>
+            <div class="thema-box">
+                <span class="thema-lbl">AKTUELL</span>
+                <span>Vom Ausbruch der Krise bis zur gefestigten Diktatur (1929-1934)</span>
+            </div>
+        `;
+        SECS.forEach(s => {
+            const status = ST[s.id] || 'offen';
+            const badgeClass = status === 'sicher' ? 'sb-s' : (status === 'üben' ? 'sb-u' : 'sb-o');
+            html += `
+                <div class="ov-sec-card" onclick="go(${s.id})">
+                    <div class="ov-sec-inner">
+                        <div class="sec-icon-wrap">🎯</div>
+                        <div style="flex:1">
+                            <div class="ov-sec-title">${s.title}</div>
+                            <div style="font-size:12px; color:var(--text-muted)">${s.checks[0]}</div>
+                        </div>
+                        <span class="status-badge ${badgeClass}">${status.toUpperCase()}</span>
+                    </div>
+                </div>
+            `;
+        });
+        document.getElementById('mc').innerHTML = html;
+    }
+
+    function renderSection(id) {
+        const s = SECS[id];
+        document.getElementById('mc').innerHTML = `
+            <button class="back-btn" onclick="go('ov')">← Übersicht</button>
+            <div class="sec-card">
+                <div style="padding:20px">
+                    <h2 class="ov-sec-title" style="font-size:32px; margin-bottom:15px">${s.title}</h2>
+                    <div class="ex a1">
+                        <div class="afb-tag">Wissens-Check</div>
+                        <div class="qtext">Fasse die Kernpunkte zu diesem Thema zusammen. Was sind die wichtigsten Fakten?</div>
+                        <textarea class="ta" rows="5" placeholder="Schreibe deine Gedanken auf..."></textarea>
+                        <button class="show-btn" onclick="this.nextElementSibling.classList.toggle('vis')">Musterlösung anzeigen</button>
+                        <div class="muster">${s.model}</div>
+                    </div>
+                    
+                    <div style="margin-top:20px; border-top: 1px solid var(--border-color); padding-top:20px">
+                        <p style="margin-bottom:10px; font-weight:800">Status setzen:</p>
+                        <div style="display:flex; gap:10px">
+                            <button class="nb" onclick="setStatus(${id}, 'sicher')">✅ Verstanden</button>
+                            <button class="nb" onclick="setStatus(${id}, 'üben')">⚠️ Noch üben</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function setStatus(id, val) {
+        ST[id] = val;
+        go('ov');
+    }
+
+    function updateProgress() {
+        const done = Object.keys(ST).filter(k => ST[k] === 'sicher').length;
+        const pct = (done / SECS.length) * 100;
+        document.getElementById('pb').style.width = pct + '%';
+        document.getElementById('pbl').textContent = `${done} von ${SECS.length} Lernzielen gemeistert`;
+        
+        SECS.forEach(s => {
+            const btn = document.getElementById('n' + s.id);
+            if (btn) {
+                btn.className = 'nb';
+                if (ST[s.id] === 'sicher') btn.classList.add('done');
+                if (ST[s.id] === 'üben') btn.classList.add('warn');
+            }
+        });
+    }
+
+    go('ov');
+</script>
+
+</body>
+</html>
